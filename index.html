@@ -49,6 +49,122 @@
             border-radius: 0 0 175px 175px;
         }
 
+        .carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .carousel-content {
+            flex: 1;
+            overflow: hidden;
+            max-width: 1000px;
+        }
+
+        .carousel-item {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .carousel-item.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .carousel-btn {
+            background: #e63946;
+            color: black;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: #d62828;
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:active {
+            transform: scale(0.95);
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #e63946;
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 24px;
+        }
+
+        .project-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .project-description {
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #e63946;
+            width: 32px;
+            border-radius: 6px;
+        }
+
         @media (max-width: 768px) {
             .hero-image-wrapper {
                 transform: translateY(0);
@@ -68,6 +184,21 @@
                 border-radius: 0 0 150px 150px;
                 transform: translateY(calc(-50% - 40px)) translateX(50%);
             }
+
+            .carousel-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .carousel-content {
+                max-width: 100%;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
         }
 
         #mobile-menu {
@@ -79,61 +210,24 @@
 <body class="bg-[#0a0a0a] text-white">
     <nav class="sticky top-0 bg-[#0a0a0a] border-b-4 border-[#e63946] z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
-            <a href="#" class="text-[#e63946] font-bold text-xl uppercase">Beghdad Amine</a>
-            <div class="space-x-6 hidden md:flex">
-                <a href="#features" class="text-white hover:text-[#e63946] uppercase"><i class="fas fa-star mr-1"></i>
-                    Features</a>
-                <a href="#services" class="text-white hover:text-[#e63946] uppercase"><i class="fas fa-tools mr-1"></i>
-                    Services</a>
-                <a href="#portfolio" class="text-white hover:text-[#e63946] uppercase"><i
-                        class="fas fa-briefcase mr-1"></i> Portfolio</a>
-                <a href="#process" class="text-white hover:text-[#e63946] uppercase"><i class="fas fa-cogs mr-1"></i>
-                    Process</a>
-                <a href="#contact" class="text-white hover:text-[#e63946] uppercase"><i
-                        class="fas fa-envelope mr-1"></i> Contact</a>
-            </div>
-            <div class="hidden md:flex space-x-4">
-                <a href="https://www.linkedin.com/in/beghded-amine-a98130259/" target="_blank"
-                    class="text-white hover:text-[#e63946] text-xl"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/TopPlay020" target="_blank"
-                    class="text-white hover:text-[#e63946] text-xl"><i class="fab fa-github"></i></a>
-                <a href="https://web.facebook.com/a.i.e.beghdad/" target="_blank"
-                    class="text-white hover:text-[#e63946] text-xl"><i class="fab fa-facebook"></i></a>
-            </div>
+            <a href="#" class="text-[#e63946] font-bold text-xl uppercase" id="brandName">Beghdad Amine</a>
+            <div class="space-x-6 hidden md:flex" id="navLinks"></div>
+            <div class="hidden md:flex space-x-4" id="navSocial"></div>
             <button id="menu-toggle" class="md:hidden text-white"><i class="fas fa-bars"></i></button>
         </div>
         <div id="mobile-menu" class="md:hidden bg-[#0a0a0a] px-4 pb-4 space-y-4">
-            <a href="#features" class="block text-white hover:text-[#e63946] uppercase"><i class="fas fa-star mr-1"></i>
-                Features</a>
-            <a href="#services" class="block text-white hover:text-[#e63946] uppercase"><i
-                    class="fas fa-tools mr-1"></i> Services</a>
-            <a href="#portfolio" class="block text-white hover:text-[#e63946] uppercase"><i
-                    class="fas fa-briefcase mr-1"></i> Portfolio</a>
-            <a href="#process" class="block text-white hover:text-[#e63946] uppercase"><i class="fas fa-cogs mr-1"></i>
-                Process</a>
-            <a href="#contact" class="block text-white hover:text-[#e63946] uppercase"><i
-                    class="fas fa-envelope mr-1"></i> Contact</a>
-            <div class="flex space-x-4 pt-4">
-                <a href="https://www.linkedin.com/in/beghded-amine-a98130259/" target="_blank"
-                    class="text-white hover:text-[#e63946] text-xl"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/TopPlay020" target="_blank"
-                    class="text-white hover:text-[#e63946] text-xl"><i class="fab fa-github"></i></a>
-                <a href="https://web.facebook.com/a.i.e.beghdad/" target="_blank"
-                    class="text-white hover:text-[#e63946] text-xl"><i class="fab fa-facebook"></i></a>
-            </div>
+            <div id="mobileLinks"></div>
+            <div id="mobileSocial"></div>
         </div>
     </nav>
 
     <section class="hero min-h-[80vh] flex items-center py-20" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-8 md:mb-0">
-                <h1 class="text-6xl md:text-7xl font-bold">I develop <span class="red">custom desktop & web
-                        applications</span></h1>
-                <p class="text-gray-400 text-xl my-6">Professional C# & .NET solutions for Windows and web. Lightweight,
-                    fast, maintainable apps and sites with clean architecture, database access, and deployment.</p>
-                <a href="https://www.linkedin.com/in/beghded-amine-a98130259/" target="_blank"
-                    class="inline-block bg-[#e63946] text-black font-semibold uppercase py-3 px-6 hover:bg-[#d62828]">Message
-                    Me</a>
+                <h1 class="text-6xl md:text-7xl font-bold" id="heroTitle"></h1>
+                <p class="text-gray-400 text-xl my-6" id="heroDesc"></p>
+                <a href="#" id="heroBtn"
+                    class="inline-block bg-[#e63946] text-black font-semibold uppercase py-3 px-6 hover:bg-[#d62828]"></a>
             </div>
             <div class="md:w-1/2 text-center">
                 <div class="hero-image-wrapper">
@@ -148,199 +242,363 @@
     <section id="features" class="py-20 bg-[#111]" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-12">Why Choose <span class="red">Me</span></h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-[#1a1a1a] p-6 border-l-4 border-[#e63946] hover:translate-y-[-10px] transition">
-                    <i class="fas fa-bolt text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-4">Lightning Fast</h3>
-                    <p class="text-gray-400">Optimized native apps for peak performance.</p>
-                </div>
-                <div class="bg-[#1a1a1a] p-6 border-l-4 border-[#e63946] hover:translate-y-[-10px] transition">
-                    <i class="fas fa-code text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-4">Clean Code</h3>
-                    <p class="text-gray-400">MVVM/MVC for scalable, maintainable solutions.</p>
-                </div>
-                <div class="bg-[#1a1a1a] p-6 border-l-4 border-[#e63946] hover:translate-y-[-10px] transition">
-                    <i class="fas fa-database text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-4">Database Ready</h3>
-                    <p class="text-gray-400">Seamless ORM integration and access.</p>
-                </div>
-            </div>
+            <div class="grid md:grid-cols-3 gap-8" id="featuresGrid"></div>
         </div>
     </section>
 
     <section id="services" class="py-20" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-12">What I <span class="red">Specialize</span> In</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition">
-                    <i class="fas fa-terminal text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-2xl font-semibold mb-4">Console Applications</h3>
-                    <p class="text-gray-400 group-hover:text-black">Efficient CLI tools and automation.</p>
-                </div>
-                <div class="group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition">
-                    <i class="fas fa-window-maximize text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-2xl font-semibold mb-4 group-hover:text-black">WinForms Applications</h3>
-                    <p class="text-gray-400 group-hover:text-black">Rapid business UIs.</p>
-                </div>
-
-                <div class="group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition">
-                    <i class="fas fa-desktop text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-2xl font-semibold mb-4 group-hover:text-black">WPF Applications</h3>
-                    <p class="text-gray-400 group-hover:text-black">Modern responsive interfaces.</p>
-                </div>
-
-                <div class="group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition">
-                    <i class="fas fa-globe text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-2xl font-semibold mb-4 group-hover:text-black">ASP.NET Web Apps</h3>
-                    <p class="text-gray-400 group-hover:text-black">Full stack web solutions with MVC/Razor.</p>
-                </div>
-
-                <div class="group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition">
-                    <i class="fas fa-server text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-2xl font-semibold mb-4 group-hover:text-black">API Development</h3>
-                    <p class="text-gray-400 group-hover:text-black">Secure RESTful APIs with .NET Core.</p>
-                </div>
-
-                <div class="group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition">
-                    <i class="fas fa-cloud text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-2xl font-semibold mb-4 group-hover:text-black">Cloud Deployment</h3>
-                    <p class="text-gray-400 group-hover:text-black">Azure/Env deployment with full control.</p>
-                </div>
-
-                <div class="group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition">
-                    <i class="fas fa-chart-line text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-2xl font-semibold mb-4 group-hover:text-black">Interactive Graphs</h3>
-                    <p class="text-gray-400 group-hover:text-black">Data visualization insights.</p>
-                </div>
-
-                <div class="group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition">
-                    <i class="fas fa-plug text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-2xl font-semibold mb-4 group-hover:text-black">Extensions & Plugins</h3>
-                    <p class="text-gray-400 group-hover:text-black">Scalable custom features.</p>
-                </div>
-
-                <div class="group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition">
-                    <i class="fas fa-cogs text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-2xl font-semibold mb-4 group-hover:text-black">Custom Features</h3>
-                    <p class="text-gray-400 group-hover:text-black">Tailored solutions.</p>
-                </div>
-            </div>
+            <div class="grid md:grid-cols-3 gap-8" id="servicesGrid"></div>
         </div>
     </section>
 
     <section class="py-20 bg-[#111]" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-12">Technology <span class="red">Stack</span></h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
-                        class="fas fa-hashtag mr-1"></i> C#</span>
-                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
-                        class="fas fa-dot-circle mr-1"></i> .NET Core</span>
-                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
-                        class="fas fa-window-restore mr-1"></i> WPF</span>
-                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
-                        class="fas fa-window-maximize mr-1"></i> WinForms</span>
-                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
-                        class="fas fa-globe mr-1"></i> ASP.NET</span>
-                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
-                        class="fas fa-layer-group mr-1"></i> MVVM/MVC</span>
-                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
-                        class="fas fa-database mr-1"></i> ORM</span>
-                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
-                        class="fas fa-server mr-1"></i> SQL Server</span>
-                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
-                        class="fas fa-cube mr-1"></i> Entity Framework</span>
-                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
-                        class="fas fa-cloud mr-1"></i> Azure</span>
-            </div>
+            <div class="flex flex-wrap justify-center gap-4" id="stackTags"></div>
         </div>
     </section>
 
     <section id="portfolio" class="py-20" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-12">My <span class="red">Portfolio</span></h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-[#1a1a1a] p-6 rounded-lg hover:shadow-xl transition">
-                    <img src="Assets/project1.png" alt="Project 1" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h4 class="text-xl font-semibold mb-2">Project 1</h4>
-                    <p class="text-gray-400">Custom WPF app for data analysis.</p>
-                </div>
-                <div class="bg-[#1a1a1a] p-6 rounded-lg hover:shadow-xl transition">
-                    <img src="Assets/project2.jpg" alt="Project 2" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h4 class="text-xl font-semibold mb-2">Project 2</h4>
-                    <p class="text-gray-400">WinForms tool for automation.</p>
-                </div>
-                <div class="bg-[#1a1a1a] p-6 rounded-lg hover:shadow-xl transition">
-                    <img src="Assets/project3.png" alt="Project 3" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h4 class="text-xl font-semibold mb-2">Project 3</h4>
-                    <p class="text-gray-400">Console app with database integration.</p>
-                </div>
+
+            <div class="carousel-container">
+                <button class="carousel-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="carousel-content" id="carouselContent"></div>
+
+                <button class="carousel-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
+
+            <div class="carousel-dots" id="carouselDots"></div>
         </div>
     </section>
 
     <section id="process" class="py-20 bg-[#111]" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-5xl font-bold text-center mb-12">My Working <span class="red">Process</span></h2>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div
-                    class="bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition">
-                    <div class="text-5xl font-bold text-[#e63946] mb-2">1</div>
-                    <i class="fas fa-comments text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Discussion</h3>
-                    <p class="text-gray-400">Discuss project details.</p>
-                </div>
-                <div
-                    class="bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition">
-                    <div class="text-5xl font-bold text-[#e63946] mb-2">2</div>
-                    <i class="fas fa-map text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Planning</h3>
-                    <p class="text-gray-400">Define roadmap.</p>
-                </div>
-                <div
-                    class="bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition">
-                    <div class="text-5xl font-bold text-[#e63946] mb-2">3</div>
-                    <i class="fas fa-code text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Development</h3>
-                    <p class="text-gray-400">Build with clean code.</p>
-                </div>
-                <div
-                    class="bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition">
-                    <div class="text-5xl font-bold text-[#e63946] mb-2">4</div>
-                    <i class="fas fa-rocket text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Delivery</h3>
-                    <p class="text-gray-400">Deploy functional app/site.</p>
-                </div>
-            </div>
+            <div class="grid md:grid-cols-4 gap-8" id="processGrid"></div>
         </div>
     </section>
 
     <section id="contact" class="py-24 bg-[#1a1a1a] text-center border-t-4 border-b-4 border-[#e63946]"
         data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold mb-6">Ready to <span class="red">Build</span> Your App or Site?</h2>
-            <p class="text-gray-400 text-xl mb-8">Discuss your idea for a professional desktop or web solution.</p>
-            <a href="https://www.linkedin.com/in/beghded-amine-a98130259/" target="_blank"
-                class="inline-block bg-[#e63946] text-black font-semibold uppercase py-3 px-6 hover:bg-[#d62828]">Send
-                Message</a>
+            <h2 class="text-5xl font-bold mb-6" id="contactTitle"></h2>
+            <p class="text-gray-400 text-xl mb-8" id="contactDesc"></p>
+            <a href="#" id="contactBtn"
+                class="inline-block bg-[#e63946] text-black font-semibold uppercase py-3 px-6 hover:bg-[#d62828]"></a>
         </div>
     </section>
 
     <footer class="bg-[#0a0a0a] border-t-4 border-[#e63946] py-6 text-center text-gray-500">
-        <p>&copy; 2025 Beghdad Amine. Full Stack .NET Specialist. All rights reserved.</p>
-        <div class="flex justify-center space-x-6 mt-4">
-            <a href="https://www.linkedin.com/in/beghded-amine-a98130259/" target="_blank"
-                class="text-gray-400 hover:text-[#e63946]"><i class="fab fa-linkedin text-2xl"></i></a>
-            <a href="https://github.com/TopPlay020" target="_blank" class="text-gray-400 hover:text-[#e63946]"><i
-                    class="fab fa-github text-2xl"></i></a>
-            <a href="https://web.facebook.com/a.i.e.beghdad/" target="_blank"
-                class="text-gray-400 hover:text-[#e63946]"><i class="fab fa-facebook text-2xl"></i></a>
-        </div>
+        <p id="footerText"></p>
+        <div class="flex justify-center space-x-6 mt-4" id="footerSocial"></div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000 });
+        const portfolioData = {
+            brand: {
+                name: "Beghdad Amine",
+                year: 2025
+            },
+            hero: {
+                title: "I develop <span class='red'>custom desktop & web applications</span>",
+                description: "Professional C# & .NET solutions for Windows and web. Lightweight, fast, maintainable apps and sites with clean architecture, database access, and deployment.",
+                buttonText: "Message Me",
+                buttonLink: "https://www.linkedin.com/in/beghded-amine-a98130259/"
+            },
+            contact: {
+                title: "Ready to <span class='red'>Build</span> Your App or Site?",
+                description: "Discuss your idea for a professional desktop or web solution.",
+                buttonText: "Send Message",
+                buttonLink: "https://www.linkedin.com/in/beghded-amine-a98130259/"
+            },
+            footer: {
+                text: "&copy; 2025 Beghdad Amine. Full Stack .NET Specialist. All rights reserved."
+            },
+            navLinks: [
+                { name: "Features", href: "#features", icon: "fa-star" },
+                { name: "Services", href: "#services", icon: "fa-tools" },
+                { name: "Portfolio", href: "#portfolio", icon: "fa-briefcase" },
+                { name: "Process", href: "#process", icon: "fa-cogs" },
+                { name: "Contact", href: "#contact", icon: "fa-envelope" }
+            ],
+            social: [
+                { name: "LinkedIn", href: "https://www.linkedin.com/in/beghded-amine-a98130259/", icon: "fab fa-linkedin" },
+                { name: "GitHub", href: "https://github.com/TopPlay020", icon: "fab fa-github" },
+                { name: "Facebook", href: "https://web.facebook.com/a.i.e.beghdad/", icon: "fab fa-facebook" }
+            ],
+            features: [
+                { icon: "fa-bolt", title: "Lightning Fast", description: "Optimized native apps for peak performance." },
+                { icon: "fa-code", title: "Clean Code", description: "MVVM/MVC for scalable, maintainable solutions." },
+                { icon: "fa-database", title: "Database Ready", description: "Seamless ORM integration and access." }
+            ],
+            services: [
+                { icon: "fa-terminal", title: "Console Applications", description: "Efficient CLI tools and automation." },
+                { icon: "fa-window-maximize", title: "WinForms Applications", description: "Rapid business UIs." },
+                { icon: "fa-desktop", title: "WPF Applications", description: "Modern responsive interfaces." },
+                { icon: "fa-globe", title: "ASP.NET Web Apps", description: "Full stack web solutions with MVC/Razor." },
+                { icon: "fa-server", title: "API Development", description: "Secure RESTful APIs with .NET Core." },
+                { icon: "fa-cloud", title: "Cloud Deployment", description: "Azure/Env deployment with full control." },
+                { icon: "fa-chart-line", title: "Interactive Graphs", description: "Data visualization insights." },
+                { icon: "fa-plug", title: "Extensions & Plugins", description: "Scalable custom features." },
+                { icon: "fa-cogs", title: "Custom Features", description: "Tailored solutions." }
+            ],
+            technologies: [
+                { name: "C#", icon: "fa-hashtag" },
+                { name: ".NET Core", icon: "fa-dot-circle" },
+                { name: "WPF", icon: "fa-window-restore" },
+                { name: "WinForms", icon: "fa-window-maximize" },
+                { name: "ASP.NET", icon: "fa-globe" },
+                { name: "MVVM/MVC", icon: "fa-layer-group" },
+                { name: "ORM", icon: "fa-database" },
+                { name: "SQL Server", icon: "fa-server" },
+                { name: "Entity Framework", icon: "fa-cube" },
+                { name: "Azure", icon: "fa-cloud" }
+            ],
+            portfolio: [
+                { image: "Assets/project1.png", title: "WPF Tools App", description: "Custom WPF app for Tools Like Converting Image Types." },
+                { image: "Assets/project2.jpg", title: "QtOsgEarth", description: "C++ project that combines the Qt framework with OsgEarth libraries to enhance geospatial visualization tools" },
+                { image: "Assets/project3.png", title: "P2P Chat App", description: "A WPF P2P chat app uses sockets to send messages directly between users without a central server." }
+            ],
+            process: [
+                { number: 1, icon: "fa-comments", title: "Discussion", description: "Discuss project details." },
+                { number: 2, icon: "fa-map", title: "Planning", description: "Define roadmap." },
+                { number: 3, icon: "fa-code", title: "Development", description: "Build with clean code." },
+                { number: 4, icon: "fa-rocket", title: "Delivery", description: "Deploy functional app/site." }
+            ]
+        };
+
+        let currentSlide = 0;
+
+        function renderNavLinks() {
+            const desktop = document.getElementById('navLinks');
+            const mobile = document.getElementById('mobileLinks');
+
+            portfolioData.navLinks.forEach(link => {
+                const desktopLink = document.createElement('a');
+                desktopLink.href = link.href;
+                desktopLink.className = 'text-white hover:text-[#e63946] uppercase';
+                desktopLink.innerHTML = `<i class="fas ${link.icon} mr-1"></i>${link.name}`;
+                desktop.appendChild(desktopLink);
+
+                const mobileLink = document.createElement('a');
+                mobileLink.href = link.href;
+                mobileLink.className = 'block text-white hover:text-[#e63946] uppercase';
+                mobileLink.innerHTML = `<i class="fas ${link.icon} mr-1"></i>${link.name}`;
+                mobile.appendChild(mobileLink);
+            });
+        }
+
+        function renderSocial() {
+            const desktop = document.getElementById('navSocial');
+            const mobile = document.getElementById('mobileSocial');
+            const footer = document.getElementById('footerSocial');
+
+            portfolioData.social.forEach(social => {
+                const deskLink = document.createElement('a');
+                deskLink.href = social.href;
+                deskLink.target = '_blank';
+                deskLink.className = 'text-white hover:text-[#e63946] text-xl';
+                deskLink.innerHTML = `<i class="${social.icon}"></i>`;
+                desktop.appendChild(deskLink);
+
+                const mobLink = document.createElement('a');
+                mobLink.href = social.href;
+                mobLink.target = '_blank';
+                mobLink.className = 'text-white hover:text-[#e63946] text-xl';
+                mobLink.innerHTML = `<i class="${social.icon}"></i>`;
+                mobile.appendChild(mobLink);
+
+                const footLink = document.createElement('a');
+                footLink.href = social.href;
+                footLink.target = '_blank';
+                footLink.className = 'text-gray-400 hover:text-[#e63946]';
+                footLink.innerHTML = `<i class="${social.icon} text-2xl"></i>`;
+                footer.appendChild(footLink);
+            });
+        }
+
+        function renderFeatures() {
+            const grid = document.getElementById('featuresGrid');
+            portfolioData.features.forEach(feature => {
+                const div = document.createElement('div');
+                div.className = 'bg-[#1a1a1a] p-6 border-l-4 border-[#e63946] hover:translate-y-[-10px] transition';
+                div.innerHTML = `
+                    <i class="fas ${feature.icon} text-[#e63946] text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">${feature.title}</h3>
+                    <p class="text-gray-400">${feature.description}</p>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        function renderServices() {
+            const grid = document.getElementById('servicesGrid');
+            portfolioData.services.forEach(service => {
+                const div = document.createElement('div');
+                div.className = 'group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition';
+                div.innerHTML = `
+                    <i class="fas ${service.icon} text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
+                    <h3 class="text-2xl font-semibold mb-4 group-hover:text-black">${service.title}</h3>
+                    <p class="text-gray-400 group-hover:text-black">${service.description}</p>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        function renderTechnologies() {
+            const container = document.getElementById('stackTags');
+            portfolioData.technologies.forEach(tech => {
+                const span = document.createElement('span');
+                span.className = 'bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full';
+                span.innerHTML = `<i class="fas ${tech.icon} mr-1"></i>${tech.name}`;
+                container.appendChild(span);
+            });
+        }
+
+        function renderPortfolio() {
+            const content = document.getElementById('carouselContent');
+            const dotsContainer = document.getElementById('carouselDots');
+
+            // Group projects by 2
+            for (let i = 0; i < portfolioData.portfolio.length; i += 2) {
+                const item = document.createElement('div');
+                item.className = `carousel-item ${i === 0 ? 'active' : ''}`;
+
+                let html = '<div class="grid grid-cols-1 md:grid-cols-2 gap-6">';
+
+                // First project
+                const project1 = portfolioData.portfolio[i];
+                html += `
+                    <div class="project-card">
+                        <img src="${project1.image}" alt="${project1.title}" class="project-image">
+                        <div class="project-info">
+                            <h4 class="project-title">${project1.title}</h4>
+                            <p class="project-description">${project1.description}</p>
+                        </div>
+                    </div>
+                `;
+
+                // Second project if exists
+                if (i + 1 < portfolioData.portfolio.length) {
+                    const project2 = portfolioData.portfolio[i + 1];
+                    html += `
+                        <div class="project-card">
+                            <img src="${project2.image}" alt="${project2.title}" class="project-image">
+                            <div class="project-info">
+                                <h4 class="project-title">${project2.title}</h4>
+                                <p class="project-description">${project2.description}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                html += '</div>';
+                item.innerHTML = html;
+                content.appendChild(item);
+
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(i / 2));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateCarousel() {
+            const items = document.querySelectorAll('.carousel-item');
+            const dots = document.querySelectorAll('.dot');
+
+            items.forEach((item, index) => {
+                item.classList.toggle('active', index === currentSlide);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            const totalSlides = Math.ceil(portfolioData.portfolio.length / 2);
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            const totalSlides = Math.ceil(portfolioData.portfolio.length / 2);
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function renderProcess() {
+            const grid = document.getElementById('processGrid');
+            portfolioData.process.forEach(step => {
+                const div = document.createElement('div');
+                div.className = 'bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition';
+                div.innerHTML = `
+                    <div class="text-5xl font-bold text-[#e63946] mb-2">${step.number}</div>
+                    <i class="fas ${step.icon} text-[#e63946] text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">${step.title}</h3>
+                    <p class="text-gray-400">${step.description}</p>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        function renderHero() {
+            document.getElementById('heroTitle').innerHTML = portfolioData.hero.title;
+            document.getElementById('heroDesc').textContent = portfolioData.hero.description;
+            const btn = document.getElementById('heroBtn');
+            btn.href = portfolioData.hero.buttonLink;
+            btn.target = '_blank';
+            btn.textContent = portfolioData.hero.buttonText;
+        }
+
+        function renderContact() {
+            document.getElementById('contactTitle').innerHTML = portfolioData.contact.title;
+            document.getElementById('contactDesc').textContent = portfolioData.contact.description;
+            const btn = document.getElementById('contactBtn');
+            btn.href = portfolioData.contact.buttonLink;
+            btn.target = '_blank';
+            btn.textContent = portfolioData.contact.buttonText;
+        }
+
+        function renderFooter() {
+            document.getElementById('footerText').innerHTML = portfolioData.footer.text;
+        }
+
+        function init() {
+            renderNavLinks();
+            renderSocial();
+            renderFeatures();
+            renderServices();
+            renderTechnologies();
+            renderPortfolio();
+            renderProcess();
+            renderHero();
+            renderContact();
+            renderFooter();
+            AOS.init({ duration: 1000 });
+
+            document.getElementById('prevBtn').addEventListener('click', prevSlide);
+            document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        }
+
+        init();
+
         document.getElementById('menu-toggle').addEventListener('click', () => {
             const menu = document.getElementById('mobile-menu');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
