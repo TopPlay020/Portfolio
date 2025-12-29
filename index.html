@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beghdad Amine - Full Stack .NET Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .red {
+            color: #e63946;
+        }
+
+        .hero-image-wrapper {
+            transform: translateY(70px);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle-face {
+            display: inline-block;
+            position: relative;
+            border: 3px solid #e63946;
+            border-radius: 50%;
+            width: 356px;
+            height: 356px;
+            margin-top: 40px;
+            z-index: 2;
+            box-shadow: 0 0 40px rgba(230, 57, 70, 0.4);
+        }
+
+        .circle-face>span {
+            position: absolute;
+            transform: translateY(calc(-50% - 84px)) translateX(50%);
+            top: 50%;
+            right: 50%;
+            width: 350px;
+            height: 520px;
+            background: none no-repeat center bottom / 350px;
+            border-radius: 0 0 175px 175px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-image-wrapper {
+                transform: translateY(0);
+                margin-top: 2rem;
+            }
+
+            .circle-face {
+                width: 300px;
+                height: 300px;
+                margin-top: 0;
+            }
+
+            .circle-face>span {
+                width: 300px;
+                height: 380px;
+                background-size: 300px !important;
+                border-radius: 0 0 150px 150px;
+                transform: translateY(calc(-50% - 40px)) translateX(50%);
+            }
+        }
+
+        #mobile-menu {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0a0a0a] text-white">
+    <nav class="sticky top-0 bg-[#0a0a0a] border-b-4 border-[#e63946] z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+            <a href="#" class="text-[#e63946] font-bold text-xl uppercase">Beghdad Amine</a>
+            <div class="space-x-6 hidden md:flex">
+                <a href="#features" class="text-white hover:text-[#e63946] uppercase"><i class="fas fa-star mr-1"></i>
+                    Features</a>
+                <a href="#services" class="text-white hover:text-[#e63946] uppercase"><i class="fas fa-tools mr-1"></i>
+                    Services</a>
+                <a href="#portfolio" class="text-white hover:text-[#e63946] uppercase"><i
+                        class="fas fa-briefcase mr-1"></i> Portfolio</a>
+                <a href="#process" class="text-white hover:text-[#e63946] uppercase"><i class="fas fa-cogs mr-1"></i>
+                    Process</a>
+                <a href="#contact" class="text-white hover:text-[#e63946] uppercase"><i
+                        class="fas fa-envelope mr-1"></i> Contact</a>
+            </div>
+            <button id="menu-toggle" class="md:hidden text-white"><i class="fas fa-bars"></i></button>
+        </div>
+        <div id="mobile-menu" class="md:hidden bg-[#0a0a0a] px-4 pb-4 space-y-4">
+            <a href="#features" class="block text-white hover:text-[#e63946] uppercase"><i class="fas fa-star mr-1"></i>
+                Features</a>
+            <a href="#services" class="block text-white hover:text-[#e63946] uppercase"><i
+                    class="fas fa-tools mr-1"></i> Services</a>
+            <a href="#portfolio" class="block text-white hover:text-[#e63946] uppercase"><i
+                    class="fas fa-briefcase mr-1"></i> Portfolio</a>
+            <a href="#process" class="block text-white hover:text-[#e63946] uppercase"><i class="fas fa-cogs mr-1"></i>
+                Process</a>
+            <a href="#contact" class="block text-white hover:text-[#e63946] uppercase"><i
+                    class="fas fa-envelope mr-1"></i> Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero min-h-[80vh] flex items-center py-20" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-6xl md:text-7xl font-bold">I develop <span class="red">custom desktop & web
+                        applications</span></h1>
+                <p class="text-gray-400 text-xl my-6">Professional C# & .NET solutions for Windows and web. Lightweight,
+                    fast, maintainable apps and sites with clean architecture, database access, and deployment.</p>
+                <button class="bg-[#e63946] text-black font-semibold uppercase py-3 px-6 hover:bg-[#d62828]">Message
+                    Me</button>
+            </div>
+            <div class="md:w-1/2 text-center">
+                <div class="hero-image-wrapper">
+                    <span class="circle-face">
+                        <span style="background-image:url(Assets/image.png);"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 bg-[#111]" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold text-center mb-12">Why Choose <span class="red">Me</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-[#1a1a1a] p-6 border-l-4 border-[#e63946] hover:translate-y-[-10px] transition">
+                    <i class="fas fa-bolt text-[#e63946] text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">Lightning Fast</h3>
+                    <p class="text-gray-400">Optimized native apps for peak performance.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-6 border-l-4 border-[#e63946] hover:translate-y-[-10px] transition">
+                    <i class="fas fa-code text-[#e63946] text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">Clean Code</h3>
+                    <p class="text-gray-400">MVVM/MVC for scalable, maintainable solutions.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-6 border-l-4 border-[#e63946] hover:translate-y-[-10px] transition">
+                    <i class="fas fa-database text-[#e63946] text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">Database Ready</h3>
+                    <p class="text-gray-400">Seamless ORM integration and access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold text-center mb-12">What I <span class="red">Specialize</span> In</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] hover:text-black transition">
+                    <i class="fas fa-terminal text-[#e63946] text-3xl mb-4 hover:text-black"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Console Applications</h3>
+                    <p class="text-gray-400 hover:text-black">Efficient CLI tools and automation.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] hover:text-black transition">
+                    <i class="fas fa-window-maximize text-[#e63946] text-3xl mb-4 hover:text-black"></i>
+                    <h3 class="text-2xl font-semibold mb-4">WinForms Applications</h3>
+                    <p class="text-gray-400 hover:text-black">Rapid business UIs.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] hover:text-black transition">
+                    <i class="fas fa-desktop text-[#e63946] text-3xl mb-4 hover:text-black"></i>
+                    <h3 class="text-2xl font-semibold mb-4">WPF Applications</h3>
+                    <p class="text-gray-400 hover:text-black">Modern responsive interfaces.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] hover:text-black transition">
+                    <i class="fas fa-globe text-[#e63946] text-3xl mb-4 hover:text-black"></i>
+                    <h3 class="text-2xl font-semibold mb-4">ASP.NET Web Apps</h3>
+                    <p class="text-gray-400 hover:text-black">Full stack web solutions with MVC/Razor.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] hover:text-black transition">
+                    <i class="fas fa-server text-[#e63946] text-3xl mb-4 hover:text-black"></i>
+                    <h3 class="text-2xl font-semibold mb-4">API Development</h3>
+                    <p class="text-gray-400 hover:text-black">Secure RESTful APIs with .NET Core.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] hover:text-black transition">
+                    <i class="fas fa-cloud text-[#e63946] text-3xl mb-4 hover:text-black"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Cloud Deployment</h3>
+                    <p class="text-gray-400 hover:text-black">Azure/Env deployment with full control.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] hover:text-black transition">
+                    <i class="fas fa-chart-line text-[#e63946] text-3xl mb-4 hover:text-black"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Interactive Graphs</h3>
+                    <p class="text-gray-400 hover:text-black">Data visualization insights.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] hover:text-black transition">
+                    <i class="fas fa-plug text-[#e63946] text-3xl mb-4 hover:text-black"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Extensions & Plugins</h3>
+                    <p class="text-gray-400 hover:text-black">Scalable custom features.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] hover:text-black transition">
+                    <i class="fas fa-cogs text-[#e63946] text-3xl mb-4 hover:text-black"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Custom Features</h3>
+                    <p class="text-gray-400 hover:text-black">Tailored solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-[#111]" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold text-center mb-12">Technology <span class="red">Stack</span></h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
+                        class="fas fa-hashtag mr-1"></i> C#</span>
+                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
+                        class="fas fa-dot-circle mr-1"></i> .NET Core</span>
+                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
+                        class="fas fa-window-restore mr-1"></i> WPF</span>
+                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
+                        class="fas fa-window-maximize mr-1"></i> WinForms</span>
+                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
+                        class="fas fa-globe mr-1"></i> ASP.NET</span>
+                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
+                        class="fas fa-layer-group mr-1"></i> MVVM/MVC</span>
+                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
+                        class="fas fa-database mr-1"></i> ORM</span>
+                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
+                        class="fas fa-server mr-1"></i> SQL Server</span>
+                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
+                        class="fas fa-cube mr-1"></i> Entity Framework</span>
+                <span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full"><i
+                        class="fas fa-cloud mr-1"></i> Azure</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold text-center mb-12">My <span class="red">Portfolio</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-[#1a1a1a] p-6 rounded-lg hover:shadow-xl transition">
+                    <img src="Assets/project1.png" alt="Project 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h4 class="text-xl font-semibold mb-2">Project 1</h4>
+                    <p class="text-gray-400">Custom WPF app for data analysis.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-6 rounded-lg hover:shadow-xl transition">
+                    <img src="Assets/project2.jpg" alt="Project 2" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h4 class="text-xl font-semibold mb-2">Project 2</h4>
+                    <p class="text-gray-400">WinForms tool for automation.</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-6 rounded-lg hover:shadow-xl transition">
+                    <img src="Assets/project3.png" alt="Project 3" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h4 class="text-xl font-semibold mb-2">Project 3</h4>
+                    <p class="text-gray-400">Console app with database integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-20 bg-[#111]" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold text-center mb-12">My Working <span class="red">Process</span></h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div
+                    class="bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition">
+                    <div class="text-5xl font-bold text-[#e63946] mb-2">1</div>
+                    <i class="fas fa-comments text-[#e63946] text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Discussion</h3>
+                    <p class="text-gray-400">Discuss project details.</p>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition">
+                    <div class="text-5xl font-bold text-[#e63946] mb-2">2</div>
+                    <i class="fas fa-map text-[#e63946] text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Planning</h3>
+                    <p class="text-gray-400">Define roadmap.</p>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition">
+                    <div class="text-5xl font-bold text-[#e63946] mb-2">3</div>
+                    <i class="fas fa-code text-[#e63946] text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Development</h3>
+                    <p class="text-gray-400">Build with clean code.</p>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition">
+                    <div class="text-5xl font-bold text-[#e63946] mb-2">4</div>
+                    <i class="fas fa-rocket text-[#e63946] text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Delivery</h3>
+                    <p class="text-gray-400">Deploy functional app/site.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-[#1a1a1a] text-center border-t-4 border-b-4 border-[#e63946]"
+        data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold mb-6">Ready to <span class="red">Build</span> Your App or Site?</h2>
+            <p class="text-gray-400 text-xl mb-8">Discuss your idea for a professional desktop or web solution.</p>
+            <button class="bg-[#e63946] text-black font-semibold uppercase py-3 px-6 hover:bg-[#d62828]">Send
+                Message</button>
+        </div>
+    </section>
+
+    <footer class="bg-[#0a0a0a] border-t-4 border-[#e63946] py-6 text-center text-gray-500">
+        <p>&copy; 2025 Beghdad Amine. Full Stack .NET Specialist. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000 });
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+    </script>
+</body>
+
+</html>
