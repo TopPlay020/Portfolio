@@ -10,8 +10,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
         body {
+            width: 100%;
+            height: 100%;
             font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
 
         .red {
@@ -19,11 +29,11 @@
         }
 
         .hero-image-wrapper {
-            transform: translateY(70px);
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-top: 40%;
+            width: 100%;
         }
 
         .circle-face {
@@ -33,9 +43,9 @@
             border-radius: 50%;
             width: 356px;
             height: 356px;
-            margin-top: 40px;
             z-index: 2;
             box-shadow: 0 0 40px rgba(230, 57, 70, 0.4);
+            flex-shrink: 0;
         }
 
         .circle-face>span {
@@ -49,23 +59,10 @@
             border-radius: 0 0 175px 175px;
         }
 
-        .carousel-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .carousel-content {
-            flex: 1;
-            overflow: hidden;
-            max-width: 1000px;
-        }
-
         .carousel-item {
             display: none;
             animation: fadeIn 0.5s ease-in-out;
+            width: 100%;
         }
 
         .carousel-item.active {
@@ -105,10 +102,6 @@
             transform: scale(1.1);
         }
 
-        .carousel-btn:active {
-            transform: scale(0.95);
-        }
-
         .project-card {
             background: #1a1a1a;
             border: 1px solid #333;
@@ -125,29 +118,23 @@
         .project-image {
             width: 100%;
             aspect-ratio: 16 / 9;
-            object-fit: fill;
+            object-fit: cover;
         }
 
         .project-info {
-            padding: 24px;
+            padding: 20px;
         }
 
         .project-title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .project-description {
             color: #999;
             line-height: 1.6;
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
+            font-size: 14px;
         }
 
         .dot {
@@ -165,33 +152,33 @@
             border-radius: 6px;
         }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero-image-wrapper {
-                transform: translateY(0);
-                margin-top: 2rem;
+                margin-top: 20%;
             }
 
             .circle-face {
-                width: 300px;
-                height: 300px;
-                margin-top: 0;
+                width: 250px;
+                height: 250px;
+                border-width: 2px;
             }
 
             .circle-face>span {
-                width: 300px;
+                width: 250px;
                 height: 380px;
-                background-size: 300px !important;
-                border-radius: 0 0 150px 150px;
-                transform: translateY(calc(-50% - 40px)) translateX(50%);
+                background-size: 250px !important;
+                border-radius: 0 0 125px 125px;
+                transform: translateY(calc(-50% - 44px)) translateX(50%);
             }
 
-            .carousel-container {
-                flex-direction: column;
-                gap: 15px;
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2;
             }
 
-            .carousel-content {
-                max-width: 100%;
+            h2 {
+                font-size: 1.75rem !important;
             }
 
             .carousel-btn {
@@ -199,37 +186,99 @@
                 height: 40px;
                 font-size: 16px;
             }
+
+            .project-title {
+                font-size: 18px;
+            }
+
+            .project-info {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.5rem !important;
+            }
+
+            h2 {
+                font-size: 1.25rem !important;
+            }
+
+            .circle-face {
+                width: 200px;
+                height: 200px;
+            }
+
+            .circle-face>span {
+                width: 200px;
+                height: 300px;
+                background-size: 200px !important;
+                border-radius: 0 0 100px 100px;
+                transform: translateY(calc(-50% - 20px)) translateX(50%);
+            }
+
+            .carousel-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+                display: none;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            .dot.active {
+                width: 24px;
+            }
+
+            .project-title {
+                font-size: 16px;
+            }
+
+            .project-info {
+                padding: 12px;
+            }
         }
 
         #mobile-menu {
             display: none;
         }
+
+        #mobile-menu.active {
+            display: block;
+        }
     </style>
 </head>
 
 <body class="bg-[#0a0a0a] text-white">
-    <nav class="sticky top-0 bg-[#0a0a0a] border-b-4 border-[#e63946] z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
-            <a href="#" class="text-[#e63946] font-bold text-xl uppercase" id="brandName">Beghdad Amine</a>
+    <!-- Navigation -->
+    <nav class="sticky top-0 bg-[#0a0a0a] border-b-4 border-[#e63946] z-50 w-full">
+        <div class="flex justify-between items-center py-3 px-4 sm:px-6 lg:px-8">
+            <a href="#" class="text-[#e63946] font-bold text-lg uppercase">Beghdad Amine</a>
             <div class="space-x-6 hidden md:flex" id="navLinks"></div>
             <div class="hidden md:flex space-x-4" id="navSocial"></div>
-            <button id="menu-toggle" class="md:hidden text-white"><i class="fas fa-bars"></i></button>
+            <button id="menu-toggle" class="md:hidden text-white text-xl"><i class="fas fa-bars"></i></button>
         </div>
-        <div id="mobile-menu" class="md:hidden bg-[#0a0a0a] px-4 pb-4 space-y-4">
-            <div id="mobileLinks"></div>
-            <div id="mobileSocial"></div>
+        <div id="mobile-menu" class="md:hidden bg-[#0a0a0a] px-4 pb-4 space-y-3 border-t border-[#333]">
+            <div id="mobileLinks" class="space-y-2"></div>
+            <div id="mobileSocial" class="flex gap-4 pt-4 border-t border-[#333]"></div>
         </div>
     </nav>
 
-    <section class="hero min-h-[80vh] flex items-center py-20" data-aos="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-8 md:mb-0">
-                <h1 class="text-6xl md:text-7xl font-bold" id="heroTitle"></h1>
-                <p class="text-gray-400 text-xl my-6" id="heroDesc"></p>
+    <!-- Hero Section -->
+    <section class="bg-[#0a0a0a] py-10 md:py-20 w-full">
+        <div
+            class="flex flex-col md:flex-row items-center justify-between gap-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="w-full md:w-1/2">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4" id="heroTitle"></h1>
+                <p class="text-gray-400 text-base md:text-lg my-6" id="heroDesc"></p>
                 <a href="#" id="heroBtn"
-                    class="inline-block bg-[#e63946] text-black font-semibold uppercase py-3 px-6 hover:bg-[#d62828]"></a>
+                    class="inline-block bg-[#e63946] text-black font-semibold uppercase py-2 px-6 hover:bg-[#d62828] transition text-sm md:text-base"></a>
             </div>
-            <div class="md:w-1/2 text-center">
+            <div class="w-full md:w-1/2 flex justify-center">
                 <div class="hero-image-wrapper">
                     <span class="circle-face">
                         <span style="background-image:url(Assets/image.png);"></span>
@@ -239,76 +288,75 @@
         </div>
     </section>
 
-    <section id="features" class="py-20 bg-[#111]" data-aos="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-12">Why Choose <span class="red">Me</span></h2>
-            <div class="grid md:grid-cols-3 gap-8" id="featuresGrid"></div>
+    <!-- Features Section -->
+    <section class="bg-[#111] py-12 md:py-20 w-full">
+        <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">Why Choose <span
+                    class="red">Me</span></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="featuresGrid"></div>
         </div>
     </section>
 
-    <section id="services" class="py-20" data-aos="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-12">What I <span class="red">Specialize</span> In</h2>
-            <div class="grid md:grid-cols-3 gap-8" id="servicesGrid"></div>
+    <!-- Services Section -->
+    <section class="bg-[#0a0a0a] py-12 md:py-20 w-full">
+        <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">What I <span
+                    class="red">Specialize</span> In</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid"></div>
         </div>
     </section>
 
-    <section class="py-20 bg-[#111]" data-aos="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-12">Technology <span class="red">Stack</span></h2>
-            <div class="flex flex-wrap justify-center gap-4" id="stackTags"></div>
+    <!-- Tech Stack Section -->
+    <section class="bg-[#111] py-12 md:py-20 w-full">
+        <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">Technology <span
+                    class="red">Stack</span></h2>
+            <div class="flex flex-wrap justify-center gap-3" id="stackTags"></div>
         </div>
     </section>
 
-    <section id="portfolio" class="py-20" data-aos="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-12">My <span class="red">Portfolio</span></h2>
-
-            <div class="carousel-container">
-                <button class="carousel-btn" id="prevBtn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-
-                <div class="carousel-content" id="carouselContent"></div>
-
-                <button class="carousel-btn" id="nextBtn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+    <!-- Portfolio Section -->
+    <section class="bg-[#0a0a0a] py-12 md:py-20 w-full">
+        <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">My <span
+                    class="red">Portfolio</span></h2>
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <button class="carousel-btn hidden sm:flex" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <div class="w-full" id="carouselContent"></div>
+                <button class="carousel-btn hidden sm:flex" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
             </div>
-
-            <div class="carousel-dots" id="carouselDots"></div>
+            <div class="flex justify-center gap-2" id="carouselDots"></div>
         </div>
     </section>
 
-    <section id="process" class="py-20 bg-[#111]" data-aos="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold text-center mb-12">My Working <span class="red">Process</span></h2>
-            <div class="grid md:grid-cols-4 gap-8" id="processGrid"></div>
+    <!-- Process Section -->
+    <section class="bg-[#111] py-12 md:py-20 w-full">
+        <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">My Working <span
+                    class="red">Process</span></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="processGrid"></div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 bg-[#1a1a1a] text-center border-t-4 border-b-4 border-[#e63946]"
-        data-aos="fade-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-bold mb-6" id="contactTitle"></h2>
-            <p class="text-gray-400 text-xl mb-8" id="contactDesc"></p>
+    <!-- Contact Section -->
+    <section class="bg-[#1a1a1a] border-t-4 border-b-4 border-[#e63946] py-12 md:py-24 w-full text-center">
+        <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-6" id="contactTitle"></h2>
+            <p class="text-gray-400 text-base md:text-lg mb-8" id="contactDesc"></p>
             <a href="#" id="contactBtn"
-                class="inline-block bg-[#e63946] text-black font-semibold uppercase py-3 px-6 hover:bg-[#d62828]"></a>
+                class="inline-block bg-[#e63946] text-black font-semibold uppercase py-2 px-6 hover:bg-[#d62828] transition text-sm md:text-base"></a>
         </div>
     </section>
 
-    <footer class="bg-[#0a0a0a] border-t-4 border-[#e63946] py-6 text-center text-gray-500">
-        <p id="footerText"></p>
-        <div class="flex justify-center space-x-6 mt-4" id="footerSocial"></div>
+    <!-- Footer -->
+    <footer class="bg-[#0a0a0a] border-t-4 border-[#e63946] py-8 px-4 text-center w-full">
+        <p class="text-gray-500 mb-4" id="footerText"></p>
+        <div class="flex justify-center gap-6" id="footerSocial"></div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         const portfolioData = {
-            brand: {
-                name: "Beghdad Amine",
-                year: 2025
-            },
             hero: {
                 title: "I develop <span class='red'>custom desktop & web applications</span>",
                 description: "Professional C# & .NET solutions for Windows and web. Lightweight, fast, maintainable apps and sites with clean architecture, database access, and deployment.",
@@ -325,11 +373,11 @@
                 text: "&copy; 2025 Beghdad Amine. Full Stack .NET Specialist. All rights reserved."
             },
             navLinks: [
-                { name: "Features", href: "#features", icon: "fa-star" },
-                { name: "Services", href: "#services", icon: "fa-tools" },
-                { name: "Portfolio", href: "#portfolio", icon: "fa-briefcase" },
-                { name: "Process", href: "#process", icon: "fa-cogs" },
-                { name: "Contact", href: "#contact", icon: "fa-envelope" }
+                { name: "Features", href: "#features" },
+                { name: "Services", href: "#services" },
+                { name: "Portfolio", href: "#portfolio" },
+                { name: "Process", href: "#process" },
+                { name: "Contact", href: "#contact" }
             ],
             social: [
                 { name: "LinkedIn", href: "https://www.linkedin.com/in/beghded-amine-a98130259/", icon: "fab fa-linkedin" },
@@ -342,7 +390,7 @@
                 { icon: "fa-database", title: "Database Ready", description: "Seamless ORM integration and access." },
                 { icon: "fa-user-check", title: "Reliable", description: "I deliver on time and as promised." },
                 { icon: "fa-handshake", title: "Long-Term Partner", description: "I care about your success, not just the project." },
-                { icon: "fa-award", title: "Proven Experience", description: "6+ years solving real-world problems." },
+                { icon: "fa-award", title: "Proven Experience", description: "6+ years solving real-world problems." }
             ],
             services: [
                 { icon: "fa-terminal", title: "Console Applications", description: "Efficient CLI tools and automation." },
@@ -354,48 +402,12 @@
                 { icon: "fa-chart-line", title: "Interactive Graphs", description: "Data visualization insights." },
                 { icon: "fa-plug", title: "Extensions & Plugins", description: "Scalable custom features." },
                 { icon: "fa-cogs", title: "Custom Features", description: "Tailored solutions." }
-            ]
-            ,
+            ],
             technologies: [
-                { name: "C#" },
-                { name: ".NET Core", icon: "fa-dot-circle" },
-                { name: "ASP.NET", icon: "fa-globe" },
-                { name: "MAUI", icon: "fa-mobile-alt" },
-                { name: "WPF", icon: "fa-window-restore" },
-                { name: "WinForms", icon: "fa-window-maximize" },
-                { name: "Java", icon: "fa-brands fa-java" },
-                { name: "Kotlin", icon: "fa-code" },
-                { name: "Python", icon: "fa-brands fa-python" },
-                { name: "Node.js", icon: "fa-node-js" },
-                { name: "React", icon: "fa-brands fa-react" },
-                { name: "Vue.js", icon: "fa-vuejs" },
-                { name: "Blazor", icon: "fa-layer-group" },
-                { name: "POO", icon: "fa-project-diagram" },
-                { name: "SQL Server", icon: "fa-server" },
-                { name: "PostgreSQL", icon: "fa-database" },
-                { name: "Oracle", icon: "fa-server" },
-                { name: "MongoDB", icon: "fa-database" },
-                { name: "MariaDB", icon: "fa-database" },
-                { name: "ETL", icon: "fa-exchange-alt" },
-                { name: "Data Scraping", icon: "fa-search" },
-                { name: "Data Entry", icon: "fa-keyboard" },
-                { name: "Word/Excel Automation", icon: "fa-file-word" },
-                { name: "Azure", icon: "fa-cloud" },
-                { name: "Git", icon: "fa-code-branch" },
-                { name: "n8n", icon: "fa-project-diagram" },
-                { name: "CI/CD", icon: "fa-cogs" },
-                { name: "REST/GraphQL APIs", icon: "fa-network-wired" },
-                { name: "Automation & Workflow Tools", icon: "fa-robot" },
-                { name: "OpenGL", icon: "fa-drafting-compass" },
-                { name: "Qt", icon: "fa-window-maximize" },
-                { name: "OR-Tools", icon: "fa-cogs" },
-                { name: "SignalR", icon: "fa-wifi" },
-                { name: "Game Development", icon: "fa-gamepad" },
-                { name: "Unity", icon: "fa-brands fa-unity" },
-                { name: "Blender", icon: "fa-cube" },
-                { name: "AI Tools", icon: "fa-robot" }
-            ]
-            ,
+                "C#", ".NET Core", "ASP.NET", "MAUI", "WPF", "WinForms", "Java", "Kotlin", "Python",
+                "Node.js", "React", "Vue.js", "Blazor", "SQL Server", "PostgreSQL", "Oracle", "MongoDB",
+                "MariaDB", "Azure", "Git", "CI/CD", "REST APIs", "SignalR", "Unity", "Blender", "AI Tools"
+            ],
             portfolio: [
                 { image: "Assets/project4.png", title: "DzTutor Web App", description: "A React web application for private tutors in Algeria, enabling tutors and students to connect and manage lessons efficiently." },
                 { image: "Assets/project5.png", title: "DSS Web App", description: "A DSS using OR-Tools to predict car spare parts demand and optimize inventory based on past usage." },
@@ -421,14 +433,15 @@
             portfolioData.navLinks.forEach(link => {
                 const desktopLink = document.createElement('a');
                 desktopLink.href = link.href;
-                desktopLink.className = 'text-white hover:text-[#e63946] uppercase';
-                desktopLink.innerHTML = `<i class="fas ${link.icon} mr-1"></i>${link.name}`;
+                desktopLink.className = 'text-white hover:text-[#e63946] uppercase text-sm';
+                desktopLink.textContent = link.name;
                 desktop.appendChild(desktopLink);
 
                 const mobileLink = document.createElement('a');
                 mobileLink.href = link.href;
-                mobileLink.className = 'block text-white hover:text-[#e63946] uppercase';
-                mobileLink.innerHTML = `<i class="fas ${link.icon} mr-1"></i>${link.name}`;
+                mobileLink.className = 'block text-white hover:text-[#e63946] uppercase text-sm py-2';
+                mobileLink.textContent = link.name;
+                mobileLink.addEventListener('click', closeMobileMenu);
                 mobile.appendChild(mobileLink);
             });
         }
@@ -442,14 +455,14 @@
                 const deskLink = document.createElement('a');
                 deskLink.href = social.href;
                 deskLink.target = '_blank';
-                deskLink.className = 'text-white hover:text-[#e63946] text-xl';
+                deskLink.className = 'text-white hover:text-[#e63946] text-lg';
                 deskLink.innerHTML = `<i class="${social.icon}"></i>`;
                 desktop.appendChild(deskLink);
 
                 const mobLink = document.createElement('a');
                 mobLink.href = social.href;
                 mobLink.target = '_blank';
-                mobLink.className = 'text-white hover:text-[#e63946] text-xl';
+                mobLink.className = 'text-white hover:text-[#e63946] text-lg';
                 mobLink.innerHTML = `<i class="${social.icon}"></i>`;
                 mobile.appendChild(mobLink);
 
@@ -457,7 +470,7 @@
                 footLink.href = social.href;
                 footLink.target = '_blank';
                 footLink.className = 'text-gray-400 hover:text-[#e63946]';
-                footLink.innerHTML = `<i class="${social.icon} text-2xl"></i>`;
+                footLink.innerHTML = `<i class="${social.icon}"></i>`;
                 footer.appendChild(footLink);
             });
         }
@@ -469,8 +482,8 @@
                 div.className = 'bg-[#1a1a1a] p-6 border-l-4 border-[#e63946] hover:translate-y-[-10px] transition';
                 div.innerHTML = `
                     <i class="fas ${feature.icon} text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-4">${feature.title}</h3>
-                    <p class="text-gray-400">${feature.description}</p>
+                    <h3 class="text-lg font-semibold mb-3">${feature.title}</h3>
+                    <p class="text-gray-400 text-sm">${feature.description}</p>
                 `;
                 grid.appendChild(div);
             });
@@ -480,11 +493,11 @@
             const grid = document.getElementById('servicesGrid');
             portfolioData.services.forEach(service => {
                 const div = document.createElement('div');
-                div.className = 'group bg-[#1a1a1a] p-8 border-2 border-[#e63946] hover:bg-[#e63946] transition';
+                div.className = 'group bg-[#1a1a1a] p-6 border-2 border-[#e63946] hover:bg-[#e63946] transition';
                 div.innerHTML = `
                     <i class="fas ${service.icon} text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-2xl font-semibold mb-4 group-hover:text-black">${service.title}</h3>
-                    <p class="text-gray-400 group-hover:text-black">${service.description}</p>
+                    <h3 class="text-lg font-semibold mb-3 group-hover:text-black">${service.title}</h3>
+                    <p class="text-gray-400 text-sm group-hover:text-black">${service.description}</p>
                 `;
                 grid.appendChild(div);
             });
@@ -494,8 +507,8 @@
             const container = document.getElementById('stackTags');
             portfolioData.technologies.forEach(tech => {
                 const span = document.createElement('span');
-                span.className = 'bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full';
-                span.innerHTML = `<i class="fas ${tech.icon} mr-1"></i>${tech.name}`;
+                span.className = 'bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full text-xs sm:text-sm';
+                span.textContent = tech;
                 container.appendChild(span);
             });
         }
@@ -503,47 +516,48 @@
         function renderPortfolio() {
             const content = document.getElementById('carouselContent');
             const dotsContainer = document.getElementById('carouselDots');
+            const isMobile = window.innerWidth < 768;
+            const projectsPerSlide = isMobile ? 1 : 2;
 
-            // Group projects by 2
-            for (let i = 0; i < portfolioData.portfolio.length; i += 2) {
+            for (let i = 0; i < portfolioData.portfolio.length; i += projectsPerSlide) {
                 const item = document.createElement('div');
                 item.className = `carousel-item ${i === 0 ? 'active' : ''}`;
 
-                let html = '<div class="grid grid-cols-1 md:grid-cols-2 gap-6">';
+                const grid = document.createElement('div');
+                grid.className = isMobile ? '' : 'grid grid-cols-2 gap-6';
 
-                // First project
                 const project1 = portfolioData.portfolio[i];
-                html += `
-                    <div class="project-card">
-                        <img src="${project1.image}" alt="${project1.title}"  class="project-image">
-                        <div class="project-info">
-                            <h4 class="project-title">${project1.title}</h4>
-                            <p class="project-description">${project1.description}</p>
-                        </div>
+                const card1 = document.createElement('div');
+                card1.className = 'project-card';
+                card1.innerHTML = `
+                    <img src="${project1.image}" alt="${project1.title}" class="project-image">
+                    <div class="project-info">
+                        <h4 class="project-title">${project1.title}</h4>
+                        <p class="project-description">${project1.description}</p>
                     </div>
                 `;
+                grid.appendChild(card1);
 
-                // Second project if exists
-                if (i + 1 < portfolioData.portfolio.length) {
+                if (!isMobile && i + 1 < portfolioData.portfolio.length) {
                     const project2 = portfolioData.portfolio[i + 1];
-                    html += `
-                        <div class="project-card">
-                            <img src="${project2.image}" alt="${project2.title}" class="project-image">
-                            <div class="project-info">
-                                <h4 class="project-title">${project2.title}</h4>
-                                <p class="project-description">${project2.description}</p>
-                            </div>
+                    const card2 = document.createElement('div');
+                    card2.className = 'project-card';
+                    card2.innerHTML = `
+                        <img src="${project2.image}" alt="${project2.title}" class="project-image">
+                        <div class="project-info">
+                            <h4 class="project-title">${project2.title}</h4>
+                            <p class="project-description">${project2.description}</p>
                         </div>
                     `;
+                    grid.appendChild(card2);
                 }
 
-                html += '</div>';
-                item.innerHTML = html;
+                item.appendChild(grid);
                 content.appendChild(item);
 
                 const dot = document.createElement('div');
                 dot.className = `dot ${i === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => goToSlide(i / 2));
+                dot.addEventListener('click', () => goToSlide(isMobile ? i : Math.floor(i / 2)));
                 dotsContainer.appendChild(dot);
             }
         }
@@ -562,13 +576,17 @@
         }
 
         function nextSlide() {
-            const totalSlides = Math.ceil(portfolioData.portfolio.length / 2);
+            const isMobile = window.innerWidth < 768;
+            const projectsPerSlide = isMobile ? 1 : 2;
+            const totalSlides = Math.ceil(portfolioData.portfolio.length / projectsPerSlide);
             currentSlide = (currentSlide + 1) % totalSlides;
             updateCarousel();
         }
 
         function prevSlide() {
-            const totalSlides = Math.ceil(portfolioData.portfolio.length / 2);
+            const isMobile = window.innerWidth < 768;
+            const projectsPerSlide = isMobile ? 1 : 2;
+            const totalSlides = Math.ceil(portfolioData.portfolio.length / projectsPerSlide);
             currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
             updateCarousel();
         }
@@ -584,10 +602,10 @@
                 const div = document.createElement('div');
                 div.className = 'bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition';
                 div.innerHTML = `
-                    <div class="text-5xl font-bold text-[#e63946] mb-2">${step.number}</div>
+                    <div class="text-4xl font-bold text-[#e63946] mb-3">${step.number}</div>
                     <i class="fas ${step.icon} text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">${step.title}</h3>
-                    <p class="text-gray-400">${step.description}</p>
+                    <h3 class="text-lg font-semibold mb-2">${step.title}</h3>
+                    <p class="text-gray-400 text-sm">${step.description}</p>
                 `;
                 grid.appendChild(div);
             });
@@ -615,6 +633,10 @@
             document.getElementById('footerText').innerHTML = portfolioData.footer.text;
         }
 
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').classList.remove('active');
+        }
+
         function init() {
             renderNavLinks();
             renderSocial();
@@ -635,8 +657,14 @@
         init();
 
         document.getElementById('menu-toggle').addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+
+        window.addEventListener('resize', () => {
+            currentSlide = 0;
+            document.getElementById('carouselContent').innerHTML = '';
+            document.getElementById('carouselDots').innerHTML = '';
+            renderPortfolio();
         });
     </script>
 </body>
