@@ -125,7 +125,7 @@
         .project-image {
             width: 100%;
             aspect-ratio: 16 / 9;
-            object-fit: cover;
+            object-fit: fill;
         }
 
         .project-info {
@@ -367,7 +367,9 @@
             portfolio: [
                 { image: "Assets/project1.png", title: "WPF Tools App", description: "Custom WPF app for Tools Like Converting Image Types." },
                 { image: "Assets/project2.jpg", title: "QtOsgEarth", description: "C++ project that combines the Qt framework with OsgEarth libraries to enhance geospatial visualization tools" },
-                { image: "Assets/project3.png", title: "P2P Chat App", description: "A WPF P2P chat app uses sockets to send messages directly between users without a central server." }
+                { image: "Assets/project3.png", title: "P2P Chat App", description: "A WPF P2P chat app uses sockets to send messages directly between users without a central server." },
+                { image: "Assets/project4.png", title: "DzTutor Web App", description: "A React web application for private tutors in Algeria, enabling tutors and students to connect and manage lessons efficiently." },
+                { image: "Assets/project5.png", title: "DSS Web App", description: "A DSS using OR-Tools to predict car spare parts demand and optimize inventory based on past usage." }
             ],
             process: [
                 { number: 1, icon: "fa-comments", title: "Discussion", description: "Discuss project details." },
@@ -480,7 +482,7 @@
                 const project1 = portfolioData.portfolio[i];
                 html += `
                     <div class="project-card">
-                        <img src="${project1.image}" alt="${project1.title}" class="project-image">
+                        <img src="${project1.image}" alt="${project1.title}"  class="project-image">
                         <div class="project-info">
                             <h4 class="project-title">${project1.title}</h4>
                             <p class="project-description">${project1.description}</p>
