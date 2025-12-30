@@ -192,7 +192,7 @@
                 "description": "Custom WPF app for Tools Like Converting Image Types."
             },
             {
-                "image": "Assets/project2.jpg",
+                "image": "Assets/project2.webp",
                 "title": "QtOsgEarth",
                 "description": "C++ project that combines the Qt framework with OsgEarth libraries to enhance geospatial visualization tools"
             },
@@ -375,9 +375,9 @@
             "specialize": "اختصاصي",
             "technology": "التكنولوجيا",
             "stack": "المجموعة",
-            "my": "محفظتي",
+            "my": "محفظة",
             "portfolio": "الأعمال",
-            "myWorking": "عمليتي",
+            "myWorking": "الخطوات المتبعة",
             "process": "في العمل",
             "readyToBuild": "هل أنت مستعد",
             "build": "لبناء"
@@ -427,7 +427,7 @@
                 "description": "تطبيق WPF مخصص لأدوات مثل تحويل أنواع الصور."
             },
             {
-                "image": "Assets/project2.jpg",
+                "image": "Assets/project2.webp",
                 "title": "QtOsgEarth",
                 "description": "مشروع C++ يجمع بين إطار عمل Qt ومكتبات OsgEarth لتحسين أدوات التصور الجغرافي"
             },
