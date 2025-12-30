@@ -7,12 +7,16 @@
     <meta property="og:description"
         content="Professional C# & .NET solutions for Windows and web. Lightweight, fast, maintainable apps and sites with clean architecture, database access, and deployment.">
     <meta property="og:image" content="https://topplay020.github.io/Portfolio/Assets/preview.png">
+    <meta property="og:image:alt" content="Preview of Beghdad Amine Full Stack .NET Developer Portfolio">
     <meta property="og:url" content="https://topplay020.github.io/Portfolio/">
     <meta property="og:type" content="website">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beghdad Amine - Full Stack .NET Developer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cairo:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
@@ -26,8 +30,51 @@
         body {
             width: 100%;
             height: 100%;
-            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #e63946;
+            border-radius: 6px;
+            border: 2px solid #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d62828;
+        }
+
+        /* Firefox scrollbar */
+        * {
+            scrollbar-color: #e63946 #0a0a0a;
+            scrollbar-width: thin;
+        }
+
+        html[lang="ar"],
+        html[lang="ar"] body {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+
+        html[lang="en"],
+        html[lang="en"] body {
+            font-family: 'Poppins', sans-serif;
+            direction: ltr;
+            text-align: left;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: white;
         }
 
         .red {
@@ -158,6 +205,33 @@
             border-radius: 6px;
         }
 
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            padding: 6px 12px;
+            border: 2px solid #e63946;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        .lang-btn.active {
+            background: #e63946;
+            color: black;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero-image-wrapper {
@@ -259,14 +333,27 @@
     </style>
 </head>
 
-<body class="bg-[#0a0a0a] text-white">
+<body>
     <!-- Navigation -->
     <nav class="sticky top-0 bg-[#0a0a0a] border-b-4 border-[#e63946] z-50 w-full">
         <div class="flex justify-between items-center py-3 px-4 sm:px-6 lg:px-8">
             <a href="#" class="text-[#e63946] font-bold text-lg uppercase">Beghdad Amine</a>
-            <div class="space-x-6 hidden md:flex" id="navLinks"></div>
-            <div class="hidden md:flex space-x-4" id="navSocial"></div>
-            <button id="menu-toggle" class="md:hidden text-white text-xl"><i class="fas fa-bars"></i></button>
+            <div class="hidden md:flex items-center gap-6">
+                <div class="flex gap-6" id="navLinks"></div>
+                <div class="flex gap-4" id="navSocial"></div>
+                <div class="h-8 w-px bg-[#333]"></div>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 md:hidden">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                </div>
+                <button id="menu-toggle" class="text-white text-xl"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
         <div id="mobile-menu" class="md:hidden bg-[#0a0a0a] px-4 pb-4 space-y-3 border-t border-[#333]">
             <div id="mobileLinks" class="space-y-2"></div>
@@ -297,8 +384,9 @@
     <!-- Features Section -->
     <section class="bg-[#111] py-12 md:py-20 w-full">
         <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">Why Choose <span
-                    class="red">Me</span></h2>
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">
+                <span id="whyChooseText"></span> <span class="red" id="meText"></span>
+            </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="featuresGrid"></div>
         </div>
     </section>
@@ -306,8 +394,9 @@
     <!-- Services Section -->
     <section class="bg-[#0a0a0a] py-12 md:py-20 w-full">
         <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">What I <span
-                    class="red">Specialize</span> In</h2>
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">
+                <span id="whatSpecializeText"></span> <span class="red" id="specializeText"></span>
+            </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid"></div>
         </div>
     </section>
@@ -315,8 +404,9 @@
     <!-- Tech Stack Section -->
     <section class="bg-[#111] py-12 md:py-20 w-full">
         <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">Technology <span
-                    class="red">Stack</span></h2>
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">
+                <span id="technologyText"></span> <span class="red" id="stackText"></span>
+            </h2>
             <div class="flex flex-wrap justify-center gap-3" id="stackTags"></div>
         </div>
     </section>
@@ -324,8 +414,9 @@
     <!-- Portfolio Section -->
     <section class="bg-[#0a0a0a] py-12 md:py-20 w-full">
         <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">My <span
-                    class="red">Portfolio</span></h2>
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">
+                <span id="myText"></span> <span class="red" id="portfolioText"></span>
+            </h2>
             <div class="flex items-center justify-center gap-4 mb-8">
                 <button class="carousel-btn hidden sm:flex" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
                 <div class="w-full" id="carouselContent"></div>
@@ -338,8 +429,9 @@
     <!-- Process Section -->
     <section class="bg-[#111] py-12 md:py-20 w-full">
         <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">My Working <span
-                    class="red">Process</span></h2>
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-12">
+                <span id="myWorkingText"></span> <span class="red" id="processText"></span>
+            </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="processGrid"></div>
         </div>
     </section>
@@ -362,315 +454,288 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        const portfolioData = {
-            hero: {
-                title: "I develop <span class='red'>custom desktop & web applications</span>",
-                description: "Professional C# & .NET solutions for Windows and web. Lightweight, fast, maintainable apps and sites with clean architecture, database access, and deployment.",
-                buttonText: "Message Me",
-                buttonLink: "https://www.linkedin.com/in/beghded-amine-a98130259/"
-            },
-            contact: {
-                title: "Ready to <span class='red'>Build</span> Your App or Site?",
-                description: "Discuss your idea for a professional desktop or web solution.",
-                buttonText: "Send Message",
-                buttonLink: "https://www.linkedin.com/in/beghded-amine-a98130259/"
-            },
-            footer: {
-                text: "&copy; 2025 Beghdad Amine. Full Stack .NET Specialist. All rights reserved."
-            },
-            navLinks: [
-                { name: "Features", href: "#features" },
-                { name: "Services", href: "#services" },
-                { name: "Portfolio", href: "#portfolio" },
-                { name: "Process", href: "#process" },
-                { name: "Contact", href: "#contact" }
-            ],
-            social: [
-                { name: "LinkedIn", href: "https://www.linkedin.com/in/beghded-amine-a98130259/", icon: "fab fa-linkedin" },
-                { name: "GitHub", href: "https://github.com/TopPlay020", icon: "fab fa-github" },
-                { name: "Facebook", href: "https://web.facebook.com/a.i.e.beghdad/", icon: "fab fa-facebook" }
-            ],
-            features: [
-                { icon: "fa-bolt", title: "Lightning Fast", description: "Optimized native apps for peak performance." },
-                { icon: "fa-code", title: "Clean Code", description: "MVVM/MVC for scalable, maintainable solutions." },
-                { icon: "fa-database", title: "Database Ready", description: "Seamless ORM integration and access." },
-                { icon: "fa-user-check", title: "Reliable", description: "I deliver on time and as promised." },
-                { icon: "fa-handshake", title: "Long-Term Partner", description: "I care about your success, not just the project." },
-                { icon: "fa-award", title: "Proven Experience", description: "6+ years solving real-world problems." }
-            ],
-            services: [
-                { icon: "fa-terminal", title: "Console Applications", description: "Efficient CLI tools and automation." },
-                { icon: "fa-desktop", title: "WPF Applications", description: "Modern responsive interfaces." },
-                { icon: "fa-code", title: "Blazor Applications", description: "Modern interactive web apps with Blazor." },
-                { icon: "fa-globe", title: "ASP.NET (Backend)", description: "Robust backend services with ASP.NET." },
-                { icon: "fa-server", title: "API Development", description: "Secure RESTful APIs with .NET Core." },
-                { icon: "fa-cloud", title: "Cloud Deployment", description: "Azure/Env deployment with full control." },
-                { icon: "fa-chart-line", title: "Interactive Graphs", description: "Data visualization insights." },
-                { icon: "fa-plug", title: "Extensions & Plugins", description: "Scalable custom features." },
-                { icon: "fa-cogs", title: "Custom Features", description: "Tailored solutions." }
-            ],
-            technologies: [
-                "C#", ".NET Core", "ASP.NET", "MAUI", "WPF", "WinForms", "Java", "Kotlin", "Python",
-                "Node.js", "React", "Vue.js", "Blazor", "SQL Server", "PostgreSQL", "Oracle", "MongoDB",
-                "MariaDB", "Azure", "Git", "CI/CD", "REST APIs", "SignalR", "Unity", "Blender", "AI Tools"
-            ],
-            portfolio: [
-                { image: "Assets/project4.png", title: "DzTutor Web App", description: "A React web application for private tutors in Algeria, enabling tutors and students to connect and manage lessons efficiently." },
-                { image: "Assets/project5.png", title: "DSS Web App", description: "A DSS using OR-Tools to predict car spare parts demand and optimize inventory based on past usage." },
-                { image: "Assets/project1.png", title: "WPF Tools App", description: "Custom WPF app for Tools Like Converting Image Types." },
-                { image: "Assets/project2.jpg", title: "QtOsgEarth", description: "C++ project that combines the Qt framework with OsgEarth libraries to enhance geospatial visualization tools" },
-                { image: "Assets/project3.png", title: "P2P Chat App", description: "A WPF P2P chat app uses sockets to send messages directly between users without a central server." },
-                { image: "Assets/project6.png", title: "WorkStation Manager App", description: "A MAUI hybrid app with Blazor for managing workers and equipment efficiently within a workstation environment." }
-            ],
-            process: [
-                { number: 1, icon: "fa-comments", title: "Discussion", description: "Discuss project details." },
-                { number: 2, icon: "fa-map", title: "Planning", description: "Define roadmap." },
-                { number: 3, icon: "fa-code", title: "Development", description: "Build with clean code." },
-                { number: 4, icon: "fa-rocket", title: "Delivery", description: "Deploy functional app/site." }
-            ]
-        };
+        $(document).ready(function () {
+            let portfolioData = {};
+            let currentSlide = 0;
+            let currentLang = localStorage.getItem('lang') || 'en';
 
-        let currentSlide = 0;
+            // Load JSON data
+            function loadPortfolioData() {
+                $.getJSON('data.json', function (data) {
+                    portfolioData = data;
+                    init();
+                }).fail(function (error) {
+                    console.error('Error loading portfolio data:', error);
+                });
+            }
 
-        function renderNavLinks() {
-            const desktop = document.getElementById('navLinks');
-            const mobile = document.getElementById('mobileLinks');
+            // Get current language content
+            function getContent() {
+                return portfolioData[currentLang];
+            }
 
-            portfolioData.navLinks.forEach(link => {
-                const desktopLink = document.createElement('a');
-                desktopLink.href = link.href;
-                desktopLink.className = 'text-white hover:text-[#e63946] uppercase text-sm';
-                desktopLink.textContent = link.name;
-                desktop.appendChild(desktopLink);
+            // Switch language
+            function setLanguage(lang) {
+                currentLang = lang;
+                localStorage.setItem('lang', lang);
+                $('html').attr('lang', lang);
 
-                const mobileLink = document.createElement('a');
-                mobileLink.href = link.href;
-                mobileLink.className = 'block text-white hover:text-[#e63946] uppercase text-sm py-2';
-                mobileLink.textContent = link.name;
-                mobileLink.addEventListener('click', closeMobileMenu);
-                mobile.appendChild(mobileLink);
-            });
-        }
+                $(`.lang-btn`).removeClass('active');
+                $(`.lang-btn[data-lang="${lang}"]`).addClass('active');
 
-        function renderSocial() {
-            const desktop = document.getElementById('navSocial');
-            const mobile = document.getElementById('mobileSocial');
-            const footer = document.getElementById('footerSocial');
+                currentSlide = 0;
+                clearAllContent();
+                renderAll();
+            }
 
-            portfolioData.social.forEach(social => {
-                const deskLink = document.createElement('a');
-                deskLink.href = social.href;
-                deskLink.target = '_blank';
-                deskLink.className = 'text-white hover:text-[#e63946] text-lg';
-                deskLink.innerHTML = `<i class="${social.icon}"></i>`;
-                desktop.appendChild(deskLink);
+            // Clear all dynamic content
+            function clearAllContent() {
+                $('#navLinks, #navSocial, #mobileLinks, #mobileSocial, #featuresGrid, #servicesGrid, #stackTags, #carouselContent, #carouselDots, #processGrid, #footerSocial').empty();
+            }
 
-                const mobLink = document.createElement('a');
-                mobLink.href = social.href;
-                mobLink.target = '_blank';
-                mobLink.className = 'text-white hover:text-[#e63946] text-lg';
-                mobLink.innerHTML = `<i class="${social.icon}"></i>`;
-                mobile.appendChild(mobLink);
+            // Render nav links
+            function renderNavLinks() {
+                const content = getContent();
+                const desktop = $('#navLinks');
+                const mobile = $('#mobileLinks');
 
-                const footLink = document.createElement('a');
-                footLink.href = social.href;
-                footLink.target = '_blank';
-                footLink.className = 'text-gray-400 hover:text-[#e63946]';
-                footLink.innerHTML = `<i class="${social.icon}"></i>`;
-                footer.appendChild(footLink);
-            });
-        }
+                $.each(content.navLinks, function (i, link) {
+                    desktop.append(`<a href="${link.href}" class="text-white hover:text-[#e63946] uppercase text-sm">${link.name}</a>`);
+                    mobile.append(`<a href="${link.href}" class="block text-white hover:text-[#e63946] uppercase text-sm py-2">${link.name}</a>`);
+                });
+            }
 
-        function renderFeatures() {
-            const grid = document.getElementById('featuresGrid');
-            portfolioData.features.forEach(feature => {
-                const div = document.createElement('div');
-                div.className = 'bg-[#1a1a1a] p-6 border-l-4 border-[#e63946] hover:translate-y-[-10px] transition';
-                div.innerHTML = `
-                    <i class="fas ${feature.icon} text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-lg font-semibold mb-3">${feature.title}</h3>
-                    <p class="text-gray-400 text-sm">${feature.description}</p>
-                `;
-                grid.appendChild(div);
-            });
-        }
+            // Render social icons
+            function renderSocial() {
+                const content = getContent();
+                const desktop = $('#navSocial');
+                const mobile = $('#mobileSocial');
+                const footer = $('#footerSocial');
 
-        function renderServices() {
-            const grid = document.getElementById('servicesGrid');
-            portfolioData.services.forEach(service => {
-                const div = document.createElement('div');
-                div.className = 'group bg-[#1a1a1a] p-6 border-2 border-[#e63946] hover:bg-[#e63946] transition';
-                div.innerHTML = `
-                    <i class="fas ${service.icon} text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
-                    <h3 class="text-lg font-semibold mb-3 group-hover:text-black">${service.title}</h3>
-                    <p class="text-gray-400 text-sm group-hover:text-black">${service.description}</p>
-                `;
-                grid.appendChild(div);
-            });
-        }
+                $.each(content.social, function (i, social) {
+                    const icon = `<a href="${social.href}" target="_blank" class="text-white hover:text-[#e63946] text-lg"><i class="${social.icon}"></i></a>`;
+                    desktop.append(icon);
+                    mobile.append(icon);
+                    footer.append(`<a href="${social.href}" target="_blank" class="text-gray-400 hover:text-[#e63946]"><i class="${social.icon}"></i></a>`);
+                });
+            }
 
-        function renderTechnologies() {
-            const container = document.getElementById('stackTags');
-            portfolioData.technologies.forEach(tech => {
-                const span = document.createElement('span');
-                span.className = 'bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full text-xs sm:text-sm';
-                span.textContent = tech;
-                container.appendChild(span);
-            });
-        }
+            // Render features
+            function renderFeatures() {
+                const content = getContent();
+                const grid = $('#featuresGrid');
 
-        function renderPortfolio() {
-            const content = document.getElementById('carouselContent');
-            const dotsContainer = document.getElementById('carouselDots');
-            const isMobile = window.innerWidth < 768;
-            const projectsPerSlide = isMobile ? 1 : 2;
-
-            for (let i = 0; i < portfolioData.portfolio.length; i += projectsPerSlide) {
-                const item = document.createElement('div');
-                item.className = `carousel-item ${i === 0 ? 'active' : ''}`;
-
-                const grid = document.createElement('div');
-                grid.className = isMobile ? '' : 'grid grid-cols-2 gap-6';
-
-                const project1 = portfolioData.portfolio[i];
-                const card1 = document.createElement('div');
-                card1.className = 'project-card';
-                card1.innerHTML = `
-                    <img src="${project1.image}" alt="${project1.title}" class="project-image">
-                    <div class="project-info">
-                        <h4 class="project-title">${project1.title}</h4>
-                        <p class="project-description">${project1.description}</p>
-                    </div>
-                `;
-                grid.appendChild(card1);
-
-                if (!isMobile && i + 1 < portfolioData.portfolio.length) {
-                    const project2 = portfolioData.portfolio[i + 1];
-                    const card2 = document.createElement('div');
-                    card2.className = 'project-card';
-                    card2.innerHTML = `
-                        <img src="${project2.image}" alt="${project2.title}" class="project-image">
-                        <div class="project-info">
-                            <h4 class="project-title">${project2.title}</h4>
-                            <p class="project-description">${project2.description}</p>
+                $.each(content.features, function (i, feature) {
+                    grid.append(`
+                        <div class="bg-[#1a1a1a] p-6 border-l-4 border-[#e63946] hover:translate-y-[-10px] transition">
+                            <i class="fas ${feature.icon} text-[#e63946] text-3xl mb-4"></i>
+                            <h3 class="text-lg font-semibold mb-3">${feature.title}</h3>
+                            <p class="text-gray-400 text-sm">${feature.description}</p>
                         </div>
-                    `;
-                    grid.appendChild(card2);
+                    `);
+                });
+            }
+
+            // Render services
+            function renderServices() {
+                const content = getContent();
+                const grid = $('#servicesGrid');
+
+                $.each(content.services, function (i, service) {
+                    grid.append(`
+                        <div class="group bg-[#1a1a1a] p-6 border-2 border-[#e63946] hover:bg-[#e63946] transition">
+                            <i class="fas ${service.icon} text-[#e63946] text-3xl mb-4 group-hover:text-black"></i>
+                            <h3 class="text-lg font-semibold mb-3 group-hover:text-black">${service.title}</h3>
+                            <p class="text-gray-400 text-sm group-hover:text-black">${service.description}</p>
+                        </div>
+                    `);
+                });
+            }
+
+            // Render technologies
+            function renderTechnologies() {
+                const content = getContent();
+                const container = $('#stackTags');
+
+                $.each(content.technologies, function (i, tech) {
+                    container.append(`<span class="bg-[#e63946] text-black font-semibold py-2 px-4 rounded-full text-xs sm:text-sm">${tech}</span>`);
+                });
+            }
+
+            // Render portfolio
+            function renderPortfolio() {
+                const content = getContent();
+                const carouselContent = $('#carouselContent');
+                const dotsContainer = $('#carouselDots');
+                const isMobile = $(window).width() < 768;
+                const projectsPerSlide = isMobile ? 1 : 2;
+
+                for (let i = 0; i < content.portfolio.length; i += projectsPerSlide) {
+                    const item = $(`<div class="carousel-item ${i === 0 ? 'active' : ''}">`);
+                    const grid = $(`<div class="${isMobile ? '' : 'grid grid-cols-2 gap-6'}">`);
+
+                    const project1 = content.portfolio[i];
+                    grid.append(`
+                        <div class="project-card">
+                            <img src="${project1.image}" alt="${project1.title}" class="project-image">
+                            <div class="project-info">
+                                <h4 class="project-title">${project1.title}</h4>
+                                <p class="project-description">${project1.description}</p>
+                            </div>
+                        </div>
+                    `);
+
+                    if (!isMobile && i + 1 < content.portfolio.length) {
+                        const project2 = content.portfolio[i + 1];
+                        grid.append(`
+                            <div class="project-card">
+                                <img src="${project2.image}" alt="${project2.title}" class="project-image">
+                                <div class="project-info">
+                                    <h4 class="project-title">${project2.title}</h4>
+                                    <p class="project-description">${project2.description}</p>
+                                </div>
+                            </div>
+                        `);
+                    }
+
+                    item.append(grid);
+                    carouselContent.append(item);
+
+                    const dotIndex = isMobile ? i : Math.floor(i / 2);
+                    dotsContainer.append(`<div class="dot ${i === 0 ? 'active' : ''}" data-index="${dotIndex}"></div>`);
                 }
 
-                item.appendChild(grid);
-                content.appendChild(item);
-
-                const dot = document.createElement('div');
-                dot.className = `dot ${i === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => goToSlide(isMobile ? i : Math.floor(i / 2)));
-                dotsContainer.appendChild(dot);
+                $(document).off('click', '.dot').on('click', '.dot', function () {
+                    currentSlide = $(this).data('index');
+                    updateCarousel();
+                });
             }
-        }
 
-        function updateCarousel() {
-            const items = document.querySelectorAll('.carousel-item');
-            const dots = document.querySelectorAll('.dot');
+            // Update carousel
+            function updateCarousel() {
+                $('.carousel-item').removeClass('active').eq(currentSlide).addClass('active');
+                $('.dot').removeClass('active').eq(currentSlide).addClass('active');
+            }
 
-            items.forEach((item, index) => {
-                item.classList.toggle('active', index === currentSlide);
-            });
+            // Carousel controls
+            function nextSlide() {
+                const content = getContent();
+                const isMobile = $(window).width() < 768;
+                const projectsPerSlide = isMobile ? 1 : 2;
+                const totalSlides = Math.ceil(content.portfolio.length / projectsPerSlide);
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }
 
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
+            function prevSlide() {
+                const content = getContent();
+                const isMobile = $(window).width() < 768;
+                const projectsPerSlide = isMobile ? 1 : 2;
+                const totalSlides = Math.ceil(content.portfolio.length / projectsPerSlide);
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
 
-        function nextSlide() {
-            const isMobile = window.innerWidth < 768;
-            const projectsPerSlide = isMobile ? 1 : 2;
-            const totalSlides = Math.ceil(portfolioData.portfolio.length / projectsPerSlide);
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        }
+            // Render process
+            function renderProcess() {
+                const content = getContent();
+                const grid = $('#processGrid');
 
-        function prevSlide() {
-            const isMobile = window.innerWidth < 768;
-            const projectsPerSlide = isMobile ? 1 : 2;
-            const totalSlides = Math.ceil(portfolioData.portfolio.length / projectsPerSlide);
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        }
+                $.each(content.process, function (i, step) {
+                    grid.append(`
+                        <div class="bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition">
+                            <div class="text-4xl font-bold text-[#e63946] mb-3">${step.number}</div>
+                            <i class="fas ${step.icon} text-[#e63946] text-3xl mb-4"></i>
+                            <h3 class="text-lg font-semibold mb-2">${step.title}</h3>
+                            <p class="text-gray-400 text-sm">${step.description}</p>
+                        </div>
+                    `);
+                });
+            }
 
-        function goToSlide(index) {
-            currentSlide = index;
-            updateCarousel();
-        }
+            // Render hero section
+            function renderHero() {
+                const content = getContent();
+                $('#heroTitle').html(content.hero.title);
+                $('#heroDesc').text(content.hero.description);
+                $('#heroBtn').attr('href', content.hero.buttonLink).attr('target', '_blank').text(content.hero.buttonText);
+            }
 
-        function renderProcess() {
-            const grid = document.getElementById('processGrid');
-            portfolioData.process.forEach(step => {
-                const div = document.createElement('div');
-                div.className = 'bg-[#1a1a1a] p-6 text-center border-t-4 border-[#e63946] hover:translate-y-[-10px] transition';
-                div.innerHTML = `
-                    <div class="text-4xl font-bold text-[#e63946] mb-3">${step.number}</div>
-                    <i class="fas ${step.icon} text-[#e63946] text-3xl mb-4"></i>
-                    <h3 class="text-lg font-semibold mb-2">${step.title}</h3>
-                    <p class="text-gray-400 text-sm">${step.description}</p>
-                `;
-                grid.appendChild(div);
-            });
-        }
+            // Render contact section
+            function renderContact() {
+                const content = getContent();
+                $('#contactTitle').html(content.contact.title);
+                $('#contactDesc').text(content.contact.description);
+                $('#contactBtn').attr('href', content.contact.buttonLink).attr('target', '_blank').text(content.contact.buttonText);
+            }
 
-        function renderHero() {
-            document.getElementById('heroTitle').innerHTML = portfolioData.hero.title;
-            document.getElementById('heroDesc').textContent = portfolioData.hero.description;
-            const btn = document.getElementById('heroBtn');
-            btn.href = portfolioData.hero.buttonLink;
-            btn.target = '_blank';
-            btn.textContent = portfolioData.hero.buttonText;
-        }
+            // Render footer
+            function renderFooter() {
+                const content = getContent();
+                $('#footerText').html(content.footer.text);
+            }
 
-        function renderContact() {
-            document.getElementById('contactTitle').innerHTML = portfolioData.contact.title;
-            document.getElementById('contactDesc').textContent = portfolioData.contact.description;
-            const btn = document.getElementById('contactBtn');
-            btn.href = portfolioData.contact.buttonLink;
-            btn.target = '_blank';
-            btn.textContent = portfolioData.contact.buttonText;
-        }
+            // Render section titles
+            function renderSectionTitles() {
+                const content = getContent();
+                $('#whyChooseText').text(content.sectionTitles.whyChoose);
+                $('#meText').text(content.sectionTitles.me);
+                $('#whatSpecializeText').text(content.sectionTitles.whatSpecialize);
+                $('#specializeText').text(content.sectionTitles.specialize);
+                $('#technologyText').text(content.sectionTitles.technology);
+                $('#stackText').text(content.sectionTitles.stack);
+                $('#myText').text(content.sectionTitles.my);
+                $('#portfolioText').text(content.sectionTitles.portfolio);
+                $('#myWorkingText').text(content.sectionTitles.myWorking);
+                $('#processText').text(content.sectionTitles.process);
+            }
 
-        function renderFooter() {
-            document.getElementById('footerText').innerHTML = portfolioData.footer.text;
-        }
+            // Render everything
+            function renderAll() {
+                renderSectionTitles();
+                renderNavLinks();
+                renderSocial();
+                renderFeatures();
+                renderServices();
+                renderTechnologies();
+                renderPortfolio();
+                renderProcess();
+                renderHero();
+                renderContact();
+                renderFooter();
+                AOS.init({ duration: 1000 });
+            }
 
-        function closeMobileMenu() {
-            document.getElementById('mobile-menu').classList.remove('active');
-        }
+            // Initialize
+            function init() {
+                $('html').attr('lang', currentLang);
+                $(`.lang-btn`).removeClass('active');
+                $(`.lang-btn[data-lang="${currentLang}"]`).addClass('active');
 
-        function init() {
-            renderNavLinks();
-            renderSocial();
-            renderFeatures();
-            renderServices();
-            renderTechnologies();
-            renderPortfolio();
-            renderProcess();
-            renderHero();
-            renderContact();
-            renderFooter();
-            AOS.init({ duration: 1000 });
+                renderAll();
 
-            document.getElementById('prevBtn').addEventListener('click', prevSlide);
-            document.getElementById('nextBtn').addEventListener('click', nextSlide);
-        }
+                // Event listeners
+                $('#prevBtn').off('click').on('click', prevSlide);
+                $('#nextBtn').off('click').on('click', nextSlide);
+                $(`.lang-btn`).off('click').on('click', function () {
+                    setLanguage($(this).data('lang'));
+                });
+                $('#menu-toggle').off('click').on('click', function () {
+                    $('#mobile-menu').toggleClass('active');
+                });
+                $('#mobileLinks a').off('click').on('click', function () {
+                    $('#mobile-menu').removeClass('active');
+                });
 
-        init();
+                $(window).off('resize').on('resize', function () {
+                    currentSlide = 0;
+                    $('#carouselContent, #carouselDots').empty();
+                    renderPortfolio();
+                });
+            }
 
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('active');
-        });
-
-        window.addEventListener('resize', () => {
-            currentSlide = 0;
-            document.getElementById('carouselContent').innerHTML = '';
-            document.getElementById('carouselDots').innerHTML = '';
-            renderPortfolio();
+            // Load data and initialize
+            loadPortfolioData();
         });
     </script>
 </body>

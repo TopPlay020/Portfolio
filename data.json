@@ -1,0 +1,472 @@
+{
+    "en": {
+        "hero": {
+            "title": "I develop <span class='red'>custom desktop & web applications</span>",
+            "description": "Professional C# & .NET solutions for Windows and web. Lightweight, fast, maintainable apps and sites with clean architecture, database access, and deployment.",
+            "buttonText": "Message Me",
+            "buttonLink": "https://www.linkedin.com/in/beghded-amine-a98130259/"
+        },
+        "contact": {
+            "title": "Ready to <span class='red'>Build</span> Your App or Site?",
+            "description": "Discuss your idea for a professional desktop or web solution.",
+            "buttonText": "Send Message",
+            "buttonLink": "https://www.linkedin.com/in/beghded-amine-a98130259/"
+        },
+        "footer": {
+            "text": "&copy; 2025 Beghdad Amine. Full Stack .NET Specialist. All rights reserved."
+        },
+        "navLinks": [
+            {
+                "name": "Features",
+                "href": "#features"
+            },
+            {
+                "name": "Services",
+                "href": "#services"
+            },
+            {
+                "name": "Portfolio",
+                "href": "#portfolio"
+            },
+            {
+                "name": "Process",
+                "href": "#process"
+            },
+            {
+                "name": "Contact",
+                "href": "#contact"
+            }
+        ],
+        "social": [
+            {
+                "name": "LinkedIn",
+                "href": "https://www.linkedin.com/in/beghded-amine-a98130259/",
+                "icon": "fab fa-linkedin"
+            },
+            {
+                "name": "GitHub",
+                "href": "https://github.com/TopPlay020",
+                "icon": "fab fa-github"
+            },
+            {
+                "name": "Facebook",
+                "href": "https://web.facebook.com/a.i.e.beghdad/",
+                "icon": "fab fa-facebook"
+            }
+        ],
+        "features": [
+            {
+                "icon": "fa-bolt",
+                "title": "Lightning Fast",
+                "description": "Optimized native apps for peak performance."
+            },
+            {
+                "icon": "fa-code",
+                "title": "Clean Code",
+                "description": "MVVM/MVC for scalable, maintainable solutions."
+            },
+            {
+                "icon": "fa-database",
+                "title": "Database Ready",
+                "description": "Seamless ORM integration and access."
+            },
+            {
+                "icon": "fa-user-check",
+                "title": "Reliable",
+                "description": "I deliver on time and as promised."
+            },
+            {
+                "icon": "fa-handshake",
+                "title": "Long-Term Partner",
+                "description": "I care about your success, not just the project."
+            },
+            {
+                "icon": "fa-award",
+                "title": "Proven Experience",
+                "description": "6+ years solving real-world problems."
+            }
+        ],
+        "services": [
+            {
+                "icon": "fa-terminal",
+                "title": "Console Applications",
+                "description": "Efficient CLI tools and automation."
+            },
+            {
+                "icon": "fa-desktop",
+                "title": "WPF Applications",
+                "description": "Modern responsive interfaces."
+            },
+            {
+                "icon": "fa-code",
+                "title": "Blazor Applications",
+                "description": "Modern interactive web apps with Blazor."
+            },
+            {
+                "icon": "fa-globe",
+                "title": "ASP.NET (Backend)",
+                "description": "Robust backend services with ASP.NET."
+            },
+            {
+                "icon": "fa-server",
+                "title": "API Development",
+                "description": "Secure RESTful APIs with .NET Core."
+            },
+            {
+                "icon": "fa-cloud",
+                "title": "Cloud Deployment",
+                "description": "Azure/Env deployment with full control."
+            },
+            {
+                "icon": "fa-chart-line",
+                "title": "Interactive Graphs",
+                "description": "Data visualization insights."
+            },
+            {
+                "icon": "fa-plug",
+                "title": "Extensions & Plugins",
+                "description": "Scalable custom features."
+            },
+            {
+                "icon": "fa-cogs",
+                "title": "Custom Features",
+                "description": "Tailored solutions."
+            }
+        ],
+        "sectionTitles": {
+            "whyChoose": "Why Choose",
+            "me": "Me",
+            "whatSpecialize": "What I",
+            "specialize": "Specialize",
+            "technology": "Technology",
+            "stack": "Stack",
+            "my": "My",
+            "portfolio": "Portfolio",
+            "myWorking": "My Working",
+            "process": "Process",
+            "readyToBuild": "Ready to",
+            "build": "Build"
+        },
+        "technologies": [
+            "C#",
+            ".NET Core",
+            "ASP.NET",
+            "MAUI",
+            "WPF",
+            "WinForms",
+            "Java",
+            "Kotlin",
+            "Python",
+            "Node.js",
+            "React",
+            "Vue.js",
+            "Blazor",
+            "SQL Server",
+            "PostgreSQL",
+            "Oracle",
+            "MongoDB",
+            "MariaDB",
+            "Azure",
+            "Git",
+            "CI/CD",
+            "REST APIs",
+            "SignalR",
+            "Unity",
+            "Blender",
+            "AI Tools"
+        ],
+        "portfolio": [
+            {
+                "image": "Assets/project4.png",
+                "title": "DzTutor Web App",
+                "description": "A React web application for private tutors in Algeria, enabling tutors and students to connect and manage lessons efficiently."
+            },
+            {
+                "image": "Assets/project5.png",
+                "title": "DSS Web App",
+                "description": "A DSS using OR-Tools to predict car spare parts demand and optimize inventory based on past usage."
+            },
+            {
+                "image": "Assets/project1.png",
+                "title": "WPF Tools App",
+                "description": "Custom WPF app for Tools Like Converting Image Types."
+            },
+            {
+                "image": "Assets/project2.jpg",
+                "title": "QtOsgEarth",
+                "description": "C++ project that combines the Qt framework with OsgEarth libraries to enhance geospatial visualization tools"
+            },
+            {
+                "image": "Assets/project3.png",
+                "title": "P2P Chat App",
+                "description": "A WPF P2P chat app uses sockets to send messages directly between users without a central server."
+            },
+            {
+                "image": "Assets/project6.png",
+                "title": "WorkStation Manager App",
+                "description": "A MAUI hybrid app with Blazor for managing workers and equipment efficiently within a workstation environment."
+            }
+        ],
+        "process": [
+            {
+                "number": 1,
+                "icon": "fa-comments",
+                "title": "Discussion",
+                "description": "Discuss project details."
+            },
+            {
+                "number": 2,
+                "icon": "fa-map",
+                "title": "Planning",
+                "description": "Define roadmap."
+            },
+            {
+                "number": 3,
+                "icon": "fa-code",
+                "title": "Development",
+                "description": "Build with clean code."
+            },
+            {
+                "number": 4,
+                "icon": "fa-rocket",
+                "title": "Delivery",
+                "description": "Deploy functional app/site."
+            }
+        ]
+    },
+    "ar": {
+        "hero": {
+            "title": "أنا أطور <span class='red'>تطبيقات سطح المكتب والويب المخصصة</span>",
+            "description": "حلول احترافية C# و .NET لأنظمة Windows والويب. تطبيقات ومواقع خفيفة وسريعة وسهلة الصيانة مع معمارية نظيفة وإدارة قواعد البيانات والنشر.",
+            "buttonText": "تواصل معي",
+            "buttonLink": "https://www.linkedin.com/in/beghded-amine-a98130259/"
+        },
+        "contact": {
+            "title": "هل أنت مستعد <span class='red'>لبناء</span> تطبيقك أو موقعك؟",
+            "description": "ناقش فكرتك للحصول على حل احترافي لسطح المكتب أو الويب.",
+            "buttonText": "أرسل رسالة",
+            "buttonLink": "https://www.linkedin.com/in/beghded-amine-a98130259/"
+        },
+        "footer": {
+            "text": "&copy; 2025 بغداد أمين. متخصص Full Stack .NET. جميع الحقوق محفوظة."
+        },
+        "navLinks": [
+            {
+                "name": "المميزات",
+                "href": "#features"
+            },
+            {
+                "name": "الخدمات",
+                "href": "#services"
+            },
+            {
+                "name": "المحفظة",
+                "href": "#portfolio"
+            },
+            {
+                "name": "العملية",
+                "href": "#process"
+            },
+            {
+                "name": "التواصل",
+                "href": "#contact"
+            }
+        ],
+        "social": [
+            {
+                "name": "LinkedIn",
+                "href": "https://www.linkedin.com/in/beghded-amine-a98130259/",
+                "icon": "fab fa-linkedin"
+            },
+            {
+                "name": "GitHub",
+                "href": "https://github.com/TopPlay020",
+                "icon": "fab fa-github"
+            },
+            {
+                "name": "Facebook",
+                "href": "https://web.facebook.com/a.i.e.beghdad/",
+                "icon": "fab fa-facebook"
+            }
+        ],
+        "features": [
+            {
+                "icon": "fa-bolt",
+                "title": "سريع جداً",
+                "description": "تطبيقات أصلية محسنة للأداء الأقصى."
+            },
+            {
+                "icon": "fa-code",
+                "title": "كود نظيف",
+                "description": "MVVM/MVC لحلول قابلة للتوسع والصيانة."
+            },
+            {
+                "icon": "fa-database",
+                "title": "جاهز للقواعد",
+                "description": "تكامل سلس مع ORM والوصول المباشر."
+            },
+            {
+                "icon": "fa-user-check",
+                "title": "موثوق",
+                "description": "أسلم التزاماتي في الوقت المحدد."
+            },
+            {
+                "icon": "fa-handshake",
+                "title": "شريك طويل الأمد",
+                "description": "أهتم بنجاحك وليس فقط المشروع."
+            },
+            {
+                "icon": "fa-award",
+                "title": "خبرة مثبتة",
+                "description": "أكثر من 6 سنوات في حل مشاكل حقيقية."
+            }
+        ],
+        "services": [
+            {
+                "icon": "fa-terminal",
+                "title": "تطبيقات وحدة التحكم",
+                "description": "أدوات CLI فعالة والأتمتة."
+            },
+            {
+                "icon": "fa-desktop",
+                "title": "تطبيقات WPF",
+                "description": "واجهات مستجيبة وحديثة."
+            },
+            {
+                "icon": "fa-code",
+                "title": "تطبيقات Blazor",
+                "description": "تطبيقات ويب تفاعلية حديثة مع Blazor."
+            },
+            {
+                "icon": "fa-globe",
+                "title": "ASP.NET (الخلفية)",
+                "description": "خدمات خلفية قوية مع ASP.NET."
+            },
+            {
+                "icon": "fa-server",
+                "title": "تطوير API",
+                "description": "واجهات برمجية آمنة مع .NET Core."
+            },
+            {
+                "icon": "fa-cloud",
+                "title": "نشر سحابي",
+                "description": "نشر Azure مع التحكم الكامل."
+            },
+            {
+                "icon": "fa-chart-line",
+                "title": "رسوم بيانية تفاعلية",
+                "description": "تصور البيانات والرؤى."
+            },
+            {
+                "icon": "fa-plug",
+                "title": "الامتدادات والإضافات",
+                "description": "ميزات مخصصة قابلة للتوسع."
+            },
+            {
+                "icon": "fa-cogs",
+                "title": "ميزات مخصصة",
+                "description": "حلول مصممة خصيصاً."
+            }
+        ],
+        "sectionTitles": {
+            "whyChoose": "لماذا اختر",
+            "me": "أنا",
+            "whatSpecialize": "ما هو",
+            "specialize": "اختصاصي",
+            "technology": "التكنولوجيا",
+            "stack": "المجموعة",
+            "my": "محفظتي",
+            "portfolio": "الأعمال",
+            "myWorking": "عمليتي",
+            "process": "في العمل",
+            "readyToBuild": "هل أنت مستعد",
+            "build": "لبناء"
+        },
+        "technologies": [
+            "C#",
+            ".NET Core",
+            "ASP.NET",
+            "MAUI",
+            "WPF",
+            "WinForms",
+            "Java",
+            "Kotlin",
+            "Python",
+            "Node.js",
+            "React",
+            "Vue.js",
+            "Blazor",
+            "SQL Server",
+            "PostgreSQL",
+            "Oracle",
+            "MongoDB",
+            "MariaDB",
+            "Azure",
+            "Git",
+            "CI/CD",
+            "REST APIs",
+            "SignalR",
+            "Unity",
+            "Blender",
+            "أدوات AI"
+        ],
+        "portfolio": [
+            {
+                "image": "Assets/project4.png",
+                "title": "تطبيق DzTutor الويب",
+                "description": "تطبيق ويب React للمدرسين الخصوصيين في الجزائر، يمكن المدرسين والطلاب من التواصل وإدارة الدروس بكفاءة."
+            },
+            {
+                "image": "Assets/project5.png",
+                "title": "تطبيق DSS الويب",
+                "description": "نظام DSS يستخدم OR-Tools للتنبؤ بالطلب على قطع غيار السيارات وتحسين المخزون."
+            },
+            {
+                "image": "Assets/project1.png",
+                "title": "تطبيق WPF Tools",
+                "description": "تطبيق WPF مخصص لأدوات مثل تحويل أنواع الصور."
+            },
+            {
+                "image": "Assets/project2.jpg",
+                "title": "QtOsgEarth",
+                "description": "مشروع C++ يجمع بين إطار عمل Qt ومكتبات OsgEarth لتحسين أدوات التصور الجغرافي"
+            },
+            {
+                "image": "Assets/project3.png",
+                "title": "تطبيق P2P Chat",
+                "description": "تطبيق دردشة WPF P2P يستخدم المقابس لإرسال الرسائل مباشرة بين المستخدمين."
+            },
+            {
+                "image": "Assets/project6.png",
+                "title": "تطبيق إدارة محطة العمل",
+                "description": "تطبيق هجين MAUI مع Blazor لإدارة العمال والمعدات بكفاءة داخل بيئة العمل."
+            }
+        ],
+        "process": [
+            {
+                "number": 1,
+                "icon": "fa-comments",
+                "title": "النقاش",
+                "description": "ناقش تفاصيل المشروع."
+            },
+            {
+                "number": 2,
+                "icon": "fa-map",
+                "title": "التخطيط",
+                "description": "حدد خريطة الطريق."
+            },
+            {
+                "number": 3,
+                "icon": "fa-code",
+                "title": "التطوير",
+                "description": "البناء مع كود نظيف."
+            },
+            {
+                "number": 4,
+                "icon": "fa-rocket",
+                "title": "التسليم",
+                "description": "نشر التطبيق الوظيفي."
+            }
+        ]
+    }
+}
