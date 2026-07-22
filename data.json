@@ -1,11 +1,38 @@
 {
     "en": {
         "hero": {
+            "badge": "Available for new projects",
             "title": "I develop <span class='red'>custom desktop & web applications</span>",
+            "rolesPrefix": "I build",
+            "roles": [
+                "WPF Desktop Apps",
+                "ASP.NET Backends",
+                "Blazor Web Apps",
+                "Secure REST APIs",
+                "Cloud Solutions"
+            ],
             "description": "Professional C# & .NET solutions for Windows and web. Lightweight, fast, maintainable apps and sites with clean architecture, database access, and deployment.",
             "buttonText": "Message Me",
-            "buttonLink": "https://www.linkedin.com/in/beghded-amine-a98130259/"
+            "buttonLink": "https://www.linkedin.com/in/beghded-amine-a98130259/",
+            "secondaryBtnText": "View My Work"
         },
+        "stats": [
+            {
+                "value": 6,
+                "suffix": "+",
+                "label": "Years Experience"
+            },
+            {
+                "value": 25,
+                "suffix": "+",
+                "label": "Technologies"
+            },
+            {
+                "value": 100,
+                "suffix": "%",
+                "label": "Commitment"
+            }
+        ],
         "contact": {
             "title": "Ready to <span class='red'>Build</span> Your App or Site?",
             "description": "Discuss your idea for a professional desktop or web solution.",
@@ -145,7 +172,12 @@
             "myWorking": "My Working",
             "process": "Process",
             "readyToBuild": "Ready to",
-            "build": "Build"
+            "build": "Build",
+            "featuresOverline": "Strengths",
+            "servicesOverline": "Services",
+            "stackOverline": "Toolbox",
+            "portfolioOverline": "Selected Work",
+            "processOverline": "How I Work"
         },
         "technologies": [
             "C#",
@@ -179,32 +211,38 @@
             {
                 "image": "Assets/project4.webp",
                 "title": "DzTutor Web App",
-                "description": "A React web application for private tutors in Algeria, enabling tutors and students to connect and manage lessons efficiently."
+                "description": "A React web application for private tutors in Algeria, enabling tutors and students to connect and manage lessons efficiently.",
+                "tags": ["React", "Web"]
             },
             {
                 "image": "Assets/project5.webp",
                 "title": "DSS Web App",
-                "description": "A DSS using OR-Tools to predict car spare parts demand and optimize inventory based on past usage."
+                "description": "A DSS using OR-Tools to predict car spare parts demand and optimize inventory based on past usage.",
+                "tags": ["Python", "OR-Tools"]
             },
             {
                 "image": "Assets/project1.webp",
                 "title": "WPF Tools App",
-                "description": "Custom WPF app for Tools Like Converting Image Types."
+                "description": "Custom WPF app for Tools Like Converting Image Types.",
+                "tags": ["WPF", "C#"]
             },
             {
                 "image": "Assets/project2.webp",
                 "title": "QtOsgEarth",
-                "description": "C++ project that combines the Qt framework with OsgEarth libraries to enhance geospatial visualization tools"
+                "description": "C++ project that combines the Qt framework with OsgEarth libraries to enhance geospatial visualization tools",
+                "tags": ["C++", "Qt"]
             },
             {
                 "image": "Assets/project3.webp",
                 "title": "P2P Chat App",
-                "description": "A WPF P2P chat app uses sockets to send messages directly between users without a central server."
+                "description": "A WPF P2P chat app uses sockets to send messages directly between users without a central server.",
+                "tags": ["WPF", "Sockets"]
             },
             {
                 "image": "Assets/project6.webp",
                 "title": "WorkStation Manager App",
-                "description": "A MAUI hybrid app with Blazor for managing workers and equipment efficiently within a workstation environment."
+                "description": "A MAUI hybrid app with Blazor for managing workers and equipment efficiently within a workstation environment.",
+                "tags": ["MAUI", "Blazor"]
             }
         ],
         "process": [
@@ -236,11 +274,38 @@
     },
     "ar": {
         "hero": {
+            "badge": "متاح لمشاريع جديدة",
             "title": "أنا أطور <span class='red'>تطبيقات سطح المكتب والويب المخصصة</span>",
+            "rolesPrefix": "أبني",
+            "roles": [
+                "تطبيقات سطح المكتب WPF",
+                "خدمات ASP.NET الخلفية",
+                "تطبيقات ويب Blazor",
+                "واجهات REST API آمنة",
+                "حلول سحابية"
+            ],
             "description": "حلول احترافية C# و .NET لأنظمة Windows والويب. تطبيقات ومواقع خفيفة وسريعة وسهلة الصيانة مع معمارية نظيفة وإدارة قواعد البيانات والنشر.",
             "buttonText": "تواصل معي",
-            "buttonLink": "https://www.linkedin.com/in/beghded-amine-a98130259/"
+            "buttonLink": "https://www.linkedin.com/in/beghded-amine-a98130259/",
+            "secondaryBtnText": "شاهد أعمالي"
         },
+        "stats": [
+            {
+                "value": 6,
+                "suffix": "+",
+                "label": "سنوات الخبرة"
+            },
+            {
+                "value": 25,
+                "suffix": "+",
+                "label": "تقنية"
+            },
+            {
+                "value": 100,
+                "suffix": "%",
+                "label": "التزام"
+            }
+        ],
         "contact": {
             "title": "هل أنت مستعد <span class='red'>لبناء</span> تطبيقك أو موقعك؟",
             "description": "ناقش فكرتك للحصول على حل احترافي لسطح المكتب أو الويب.",
@@ -380,7 +445,12 @@
             "myWorking": "الخطوات المتبعة",
             "process": "في العمل",
             "readyToBuild": "هل أنت مستعد",
-            "build": "لبناء"
+            "build": "لبناء",
+            "featuresOverline": "نقاط القوة",
+            "servicesOverline": "الخدمات",
+            "stackOverline": "الأدوات",
+            "portfolioOverline": "أعمال مختارة",
+            "processOverline": "طريقة عملي"
         },
         "technologies": [
             "C#",
@@ -414,32 +484,38 @@
             {
                 "image": "Assets/project4.webp",
                 "title": "تطبيق DzTutor الويب",
-                "description": "تطبيق ويب React للمدرسين الخصوصيين في الجزائر، يمكن المدرسين والطلاب من التواصل وإدارة الدروس بكفاءة."
+                "description": "تطبيق ويب React للمدرسين الخصوصيين في الجزائر، يمكن المدرسين والطلاب من التواصل وإدارة الدروس بكفاءة.",
+                "tags": ["React", "ويب"]
             },
             {
                 "image": "Assets/project5.webp",
                 "title": "تطبيق DSS الويب",
-                "description": "نظام DSS يستخدم OR-Tools للتنبؤ بالطلب على قطع غيار السيارات وتحسين المخزون."
+                "description": "نظام DSS يستخدم OR-Tools للتنبؤ بالطلب على قطع غيار السيارات وتحسين المخزون.",
+                "tags": ["Python", "OR-Tools"]
             },
             {
                 "image": "Assets/project1.webp",
                 "title": "تطبيق WPF Tools",
-                "description": "تطبيق WPF مخصص لأدوات مثل تحويل أنواع الصور."
+                "description": "تطبيق WPF مخصص لأدوات مثل تحويل أنواع الصور.",
+                "tags": ["WPF", "C#"]
             },
             {
                 "image": "Assets/project2.webp",
                 "title": "QtOsgEarth",
-                "description": "مشروع C++ يجمع بين إطار عمل Qt ومكتبات OsgEarth لتحسين أدوات التصور الجغرافي"
+                "description": "مشروع C++ يجمع بين إطار عمل Qt ومكتبات OsgEarth لتحسين أدوات التصور الجغرافي",
+                "tags": ["C++", "Qt"]
             },
             {
                 "image": "Assets/project3.webp",
                 "title": "تطبيق P2P Chat",
-                "description": "تطبيق دردشة WPF P2P يستخدم المقابس لإرسال الرسائل مباشرة بين المستخدمين."
+                "description": "تطبيق دردشة WPF P2P يستخدم المقابس لإرسال الرسائل مباشرة بين المستخدمين.",
+                "tags": ["WPF", "Sockets"]
             },
             {
                 "image": "Assets/project6.webp",
                 "title": "تطبيق إدارة محطة العمل",
-                "description": "تطبيق هجين MAUI مع Blazor لإدارة العمال والمعدات بكفاءة داخل بيئة العمل."
+                "description": "تطبيق هجين MAUI مع Blazor لإدارة العمال والمعدات بكفاءة داخل بيئة العمل.",
+                "tags": ["MAUI", "Blazor"]
             }
         ],
         "process": [
