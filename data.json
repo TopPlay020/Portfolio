@@ -209,40 +209,71 @@
         ],
         "portfolio": [
             {
+                "image": "Assets/project7.webp",
+                "title": "Stations — Fleet & Maintenance Management Platform",
+                "description": "Desktop platform for managing a nationwide fleet of mobile technical stations — deployment, readiness, repairs and spare parts in one place.",
+                "tags": [
+                    "dotnet",
+                    "csharp",
+                    "wpf",
+                    "softwareengineering",
+                    "efcore",
+                    "sqlite"
+                ]
+            },
+            {
                 "image": "Assets/project4.webp",
                 "title": "DzTutor Web App",
                 "description": "A React web application for private tutors in Algeria, enabling tutors and students to connect and manage lessons efficiently.",
-                "tags": ["React", "Web"]
+                "tags": [
+                    "React",
+                    "Web"
+                ]
             },
             {
                 "image": "Assets/project5.webp",
                 "title": "DSS Web App",
                 "description": "A DSS using OR-Tools to predict car spare parts demand and optimize inventory based on past usage.",
-                "tags": ["Python", "OR-Tools"]
+                "tags": [
+                    "Python",
+                    "OR-Tools"
+                ]
             },
             {
                 "image": "Assets/project1.webp",
                 "title": "WPF Tools App",
                 "description": "Custom WPF app for Tools Like Converting Image Types.",
-                "tags": ["WPF", "C#"]
+                "tags": [
+                    "WPF",
+                    "C#"
+                ]
             },
             {
                 "image": "Assets/project2.webp",
                 "title": "QtOsgEarth",
                 "description": "C++ project that combines the Qt framework with OsgEarth libraries to enhance geospatial visualization tools",
-                "tags": ["C++", "Qt"]
+                "tags": [
+                    "C++",
+                    "Qt"
+                ]
             },
             {
                 "image": "Assets/project3.webp",
                 "title": "P2P Chat App",
                 "description": "A WPF P2P chat app uses sockets to send messages directly between users without a central server.",
-                "tags": ["WPF", "Sockets"]
+                "tags": [
+                    "WPF",
+                    "Sockets"
+                ]
             },
             {
                 "image": "Assets/project6.webp",
                 "title": "WorkStation Manager App",
                 "description": "A MAUI hybrid app with Blazor for managing workers and equipment efficiently within a workstation environment.",
-                "tags": ["MAUI", "Blazor"]
+                "tags": [
+                    "MAUI",
+                    "Blazor"
+                ]
             }
         ],
         "process": [
@@ -485,37 +516,55 @@
                 "image": "Assets/project4.webp",
                 "title": "تطبيق DzTutor الويب",
                 "description": "تطبيق ويب React للمدرسين الخصوصيين في الجزائر، يمكن المدرسين والطلاب من التواصل وإدارة الدروس بكفاءة.",
-                "tags": ["React", "ويب"]
+                "tags": [
+                    "React",
+                    "ويب"
+                ]
             },
             {
                 "image": "Assets/project5.webp",
                 "title": "تطبيق DSS الويب",
                 "description": "نظام DSS يستخدم OR-Tools للتنبؤ بالطلب على قطع غيار السيارات وتحسين المخزون.",
-                "tags": ["Python", "OR-Tools"]
+                "tags": [
+                    "Python",
+                    "OR-Tools"
+                ]
             },
             {
                 "image": "Assets/project1.webp",
                 "title": "تطبيق WPF Tools",
                 "description": "تطبيق WPF مخصص لأدوات مثل تحويل أنواع الصور.",
-                "tags": ["WPF", "C#"]
+                "tags": [
+                    "WPF",
+                    "C#"
+                ]
             },
             {
                 "image": "Assets/project2.webp",
                 "title": "QtOsgEarth",
                 "description": "مشروع C++ يجمع بين إطار عمل Qt ومكتبات OsgEarth لتحسين أدوات التصور الجغرافي",
-                "tags": ["C++", "Qt"]
+                "tags": [
+                    "C++",
+                    "Qt"
+                ]
             },
             {
                 "image": "Assets/project3.webp",
                 "title": "تطبيق P2P Chat",
                 "description": "تطبيق دردشة WPF P2P يستخدم المقابس لإرسال الرسائل مباشرة بين المستخدمين.",
-                "tags": ["WPF", "Sockets"]
+                "tags": [
+                    "WPF",
+                    "Sockets"
+                ]
             },
             {
                 "image": "Assets/project6.webp",
                 "title": "تطبيق إدارة محطة العمل",
                 "description": "تطبيق هجين MAUI مع Blazor لإدارة العمال والمعدات بكفاءة داخل بيئة العمل.",
-                "tags": ["MAUI", "Blazor"]
+                "tags": [
+                    "MAUI",
+                    "Blazor"
+                ]
             }
         ],
         "process": [
