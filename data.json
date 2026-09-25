@@ -209,6 +209,18 @@
         ],
         "portfolio": [
             {
+                "image": "Assets/project8.webp",
+                "title": "Wach Ta3ref — Algerian Word Puzzle Game",
+                "description": "A Unity mobile game in Algerian darija: a low-poly map of the 69 wilayas, hexagon word boards, 800+ local questions, daily challenges, a heritage museum, AdMob and Google Play purchases.",
+                "tags": [
+                    "Unity",
+                    "C#",
+                    "Android",
+                    "Game"
+                ],
+                "link": "wach-taaref/"
+            },
+            {
                 "image": "Assets/project7.webp",
                 "title": "Stations — Fleet & Maintenance Management Platform",
                 "description": "Desktop platform for managing a nationwide fleet of mobile technical stations — deployment, readiness, repairs and spare parts in one place.",
@@ -512,6 +524,18 @@
             "أدوات AI"
         ],
         "portfolio": [
+            {
+                "image": "Assets/project8.webp",
+                "title": "لعبة «واش تعرف؟»",
+                "description": "لعبة موبايل بـ Unity بالدارجة الجزائرية: خريطة الـ69 ولاية بأسلوب low-poly، ألغاز كلمات في حروف سداسية، أكثر من 800 سؤال على الولايات، تحديات يومية ومتحف للتراث.",
+                "tags": [
+                    "Unity",
+                    "C#",
+                    "أندرويد",
+                    "لعبة"
+                ],
+                "link": "wach-taaref/"
+            },
             {
                 "image": "Assets/project4.webp",
                 "title": "تطبيق DzTutor الويب",

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>واش تعرف؟ · Wach Ta3ref</title>
+<meta name="description" content="واش تعرف؟ لعبة كلمات وألغاز جزائرية بالدارجة: جول في 69 ولاية واكتشف أسرار بلادك. An Algerian word puzzle game in darija.">
+<meta property="og:title" content="واش تعرف؟ · Wach Ta3ref">
+<meta property="og:description" content="لعبة كلمات وألغاز جزائرية بالدارجة: جول في 69 ولاية واكتشف أسرار بلادك.">
+<meta property="og:image" content="feature.webp">
+<link rel="icon" href="icon.webp">
+<style>
+  :root { --bg: #0b3a2c; --card: #0f4a38; --line: rgba(255,255,255,.12); --text: #fbf7ec; --muted: rgba(251,247,236,.72); --gold: #ffc93c; --green: #22c07a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, "Segoe UI", Tahoma, sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; }
+  a { color: var(--gold); }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 40px 0 24px; text-align: center; }
+  .icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+  h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); margin: 12px 0 0; }
+  .tagline { color: var(--gold); font-size: 1.2rem; font-weight: 600; margin: 4px 0 0; }
+  .en { direction: ltr; color: var(--muted); margin: 4px 0 0; }
+  .play { display: inline-block; margin-top: 22px; padding: 12px 26px; border-radius: 999px; background: var(--green); color: #fff; font-weight: 700; text-decoration: none; box-shadow: 0 6px 0 #148a55; }
+  .play small { display: block; font-weight: 400; opacity: .85; }
+  .feature { width: 100%; border-radius: 18px; margin: 16px 0; border: 1px solid var(--line); }
+  .shots { display: flex; gap: 14px; overflow-x: auto; padding: 8px 2px 18px; scroll-snap-type: x mandatory; }
+  .shots img { width: 220px; flex: none; border-radius: 18px; scroll-snap-align: center; border: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 18px 0; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 18px; }
+  .card h3 { margin: 0 0 4px; color: var(--gold); font-size: 1.05rem; }
+  .card p { margin: 0; color: var(--muted); }
+  footer { text-align: center; padding: 28px 0 40px; color: var(--muted); }
+  footer a { margin: 0 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="icon" src="icon.webp" alt="Wach Ta3ref icon">
+    <h1>واش تعرف؟</h1>
+    <p class="tagline">لعبة كلمات وألغاز جزائرية بالدارجة</p>
+    <p class="en">Wach Ta3ref — an Algerian word puzzle game, in darija</p>
+    <a class="play" href="https://play.google.com/store/apps/details?id=com.wachtaaref.game">قريبا على Google Play<small>Coming soon on Google Play</small></a>
+  </header>
+
+  <img class="feature" src="feature.webp" alt="واش تعرف؟">
+
+  <div class="shots">
+    <img src="shot1.webp" alt="القائمة" loading="lazy">
+    <img src="shot2.webp" alt="خريطة الجزائر" loading="lazy">
+    <img src="shot3.webp" alt="اللعبة" loading="lazy">
+    <img src="shot4.webp" alt="تعرف بلي؟" loading="lazy">
+    <img src="shot5.webp" alt="وين راهي؟" loading="lazy">
+    <img src="shot6.webp" alt="متحف بلادي" loading="lazy">
+    <img src="shot7.webp" alt="قاموسي" loading="lazy">
+  </div>
+
+  <div class="grid">
+    <div class="card"><h3>🇩🇿 جولة في 69 ولاية</h3><p>خريطة الجزائر كاملة: كل ولاية عندها أسئلتها، وكي تكملها تولّي ذهبية.</p></div>
+    <div class="card"><h3>🔠 ألغاز بالدارجة</h3><p>لقا الكلمات مخبية وسط الحروف السداسية قبل ما يكمل الوقت.</p></div>
+    <div class="card"><h3>💡 تعرف بلّي؟</h3><p>أكثر من 200 معلومة حقيقية على الولايات، تتفتح مستوى بمستوى.</p></div>
+    <div class="card"><h3>🏆 تحديات كل يوم</h3><p>تحدي اليوم، تحدي الأسبوع، ولعبة الخريطة «وين راهي؟».</p></div>
+    <div class="card"><h3>🏛️ متحف بلادي</h3><p>69 كنز من التراث الجزائري تجمعهم وانت تلعب.</p></div>
+    <div class="card"><h3>📖 قاموسي</h3><p>كل كلمة تلقاها تتسجل بمعناها، وكلمة جديدة كل نهار.</p></div>
+  </div>
+
+  <footer>
+    <a href="privacy.html">سياسة الخصوصية · Privacy Policy</a>
+    <a href="../">← Portfolio</a>
+    <p>صنع في الجزائر · Made in Algeria</p>
+  </footer>
+</div>
+</body>
+</html>

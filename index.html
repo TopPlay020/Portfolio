@@ -1911,7 +1911,7 @@
             function renderProjects() {
                 const grid = qs('#projectsGrid');
                 grid.innerHTML = content().portfolio.map((p, i) => `
-                    <article class="project-card reveal tilt-card" style="--d:${(i % 3) * 0.1}s">
+                    <article class="project-card reveal tilt-card" style="--d:${(i % 3) * 0.1}s${p.link ? ';cursor:pointer' : ''}"${p.link ? ` data-link="${p.link}" role="link" tabindex="0"` : ''}>
                         <div class="project-media">
                             <img src="${p.image}" alt="${p.title}" loading="lazy">
                             <div class="project-arrow"><i class="fas fa-arrow-right"></i></div>
@@ -1922,6 +1922,13 @@
                             <p class="project-description">${p.description}</p>
                         </div>
                     </article>`).join('');
+
+                // Projects with their own page open it (click, or Enter when focused).
+                qsa('.project-card[data-link]').forEach(card => {
+                    const open = () => { window.location.href = card.dataset.link; };
+                    card.addEventListener('click', open);
+                    card.addEventListener('keydown', e => { if (e.key === 'Enter') open(); });
+                });
 
                 // Swipe dots (mobile carousel)
                 const dots = qs('#projectDots');
