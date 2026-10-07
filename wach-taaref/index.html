@@ -1,74 +1,229 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>واش تعرف؟ · Wach Ta3ref</title>
-<meta name="description" content="واش تعرف؟ لعبة كلمات وألغاز جزائرية بالدارجة: جول في 69 ولاية واكتشف أسرار بلادك. An Algerian word puzzle game in darija.">
-<meta property="og:title" content="واش تعرف؟ · Wach Ta3ref">
-<meta property="og:description" content="لعبة كلمات وألغاز جزائرية بالدارجة: جول في 69 ولاية واكتشف أسرار بلادك.">
-<meta property="og:image" content="feature.webp">
-<link rel="icon" href="icon.webp">
-<style>
-  :root { --bg: #0b3a2c; --card: #0f4a38; --line: rgba(255,255,255,.12); --text: #fbf7ec; --muted: rgba(251,247,236,.72); --gold: #ffc93c; --green: #22c07a; }
-  * { box-sizing: border-box; }
-  body { margin: 0; font-family: system-ui, "Segoe UI", Tahoma, sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; }
-  a { color: var(--gold); }
-  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
-  header { padding: 40px 0 24px; text-align: center; }
-  .icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
-  h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); margin: 12px 0 0; }
-  .tagline { color: var(--gold); font-size: 1.2rem; font-weight: 600; margin: 4px 0 0; }
-  .en { direction: ltr; color: var(--muted); margin: 4px 0 0; }
-  .play { display: inline-block; margin-top: 22px; padding: 12px 26px; border-radius: 999px; background: var(--green); color: #fff; font-weight: 700; text-decoration: none; box-shadow: 0 6px 0 #148a55; }
-  .play small { display: block; font-weight: 400; opacity: .85; }
-  .feature { width: 100%; border-radius: 18px; margin: 16px 0; border: 1px solid var(--line); }
-  .shots { display: flex; gap: 14px; overflow-x: auto; padding: 8px 2px 18px; scroll-snap-type: x mandatory; }
-  .shots img { width: 220px; flex: none; border-radius: 18px; scroll-snap-align: center; border: 1px solid var(--line); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 18px 0; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 18px; }
-  .card h3 { margin: 0 0 4px; color: var(--gold); font-size: 1.05rem; }
-  .card p { margin: 0; color: var(--muted); }
-  footer { text-align: center; padding: 28px 0 40px; color: var(--muted); }
-  footer a { margin: 0 8px; }
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        // set language + js flag before first paint (shares the "lang" choice with the portfolio)
+        (function () {
+            var l = 'ar', q = new URLSearchParams(location.search).get('lang');
+            try { l = localStorage.getItem('lang') || 'ar'; } catch (e) { }
+            if (q === 'ar' || q === 'en') l = q;
+            if (l !== 'en') l = 'ar';
+            document.documentElement.lang = l;
+            document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.className = 'js';
+        })();
+    </script>
+    <title>واش تعرف؟ · Wach Ta3ref | لعبة ألغاز كلمات جزائرية</title>
+    <meta name="description" content="واش تعرف؟ لعبة كلمات وألغاز جزائرية بالدارجة: جول في 69 ولاية واكتشف أسرار بلادك. Wach Ta3ref is an Algerian word puzzle game in darija for Android.">
+    <meta name="theme-color" content="#062a1f">
+    <link rel="canonical" href="https://topplay020.github.io/Portfolio/wach-taaref/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://topplay020.github.io/Portfolio/wach-taaref/">
+    <meta property="og:title" content="واش تعرف؟ · Wach Ta3ref">
+    <meta property="og:description" content="لعبة كلمات وألغاز جزائرية بالدارجة: جول في 69 ولاية واكتشف أسرار بلادك. An Algerian word puzzle game in darija.">
+    <meta property="og:image" content="https://topplay020.github.io/Portfolio/wach-taaref/feature.webp">
+    <meta property="og:image:alt" content="واش تعرف؟ - ألغاز كلمات جزائرية بالدارجة">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="icon.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="icon.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="shot1.webp" as="image" type="image/webp">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Lalezar&family=Readex+Pro:wght@300..600&family=Geist+Mono:wght@400..600&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="game.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "واش تعرف؟ (Wach Ta3ref)",
+        "operatingSystem": "Android",
+        "applicationCategory": "GameApplication",
+        "inLanguage": ["ar-DZ", "en"],
+        "description": "An Algerian word puzzle game in darija: tour 69 wilayas, find hidden words and discover the secrets of your country.",
+        "image": "https://topplay020.github.io/Portfolio/wach-taaref/icon.webp",
+        "author": { "@type": "Person", "name": "Beghdad Amine", "url": "https://topplay020.github.io/Portfolio/" }
+    }
+    </script>
 </head>
+
 <body>
-<div class="wrap">
-  <header>
-    <img class="icon" src="icon.webp" alt="Wach Ta3ref icon">
-    <h1>واش تعرف؟</h1>
-    <p class="tagline">لعبة كلمات وألغاز جزائرية بالدارجة</p>
-    <p class="en">Wach Ta3ref — an Algerian word puzzle game, in darija</p>
-    <a class="play" href="https://play.google.com/store/apps/details?id=com.wachtaaref.game">قريبا على Google Play<small>Coming soon on Google Play</small></a>
-  </header>
+    <header class="nav" id="nav">
+        <div class="nav-bar">
+            <a href="#top" class="brand" aria-label="Wach Ta3ref">
+                <img src="icon.webp" alt="" width="36" height="36">
+                <span><span data-l="ar">واش تعرف؟</span><span data-l="en">Wach Ta3ref</span></span>
+            </a>
+            <nav class="nav-links" aria-label="Primary">
+                <a class="nav-link" href="#features"><span data-l="ar">المميزات</span><span data-l="en">Features</span></a>
+                <a class="nav-link" href="#screens"><span data-l="ar">الشاشات</span><span data-l="en">Screens</span></a>
+                <a class="nav-link" href="privacy.html"><span data-l="ar">الخصوصية</span><span data-l="en">Privacy</span></a>
+            </nav>
+            <div class="lang" role="group" aria-label="Language">
+                <span class="lang-pill" id="langPill"></span>
+                <button type="button" data-lang="en" aria-pressed="false">EN</button>
+                <button type="button" data-lang="ar" aria-pressed="true">AR</button>
+            </div>
+            <a class="back" href="../" aria-label="Portfolio"><i class="ph ph-arrow-left flip"></i><span>Portfolio</span></a>
+        </div>
+    </header>
 
-  <img class="feature" src="feature.webp" alt="واش تعرف؟">
+    <main id="top">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="wrap hero-inner">
+                <div>
+                    <div class="chip" data-reveal><i class="ph ph-android-logo"></i><span><span data-l="ar">لعبة أندرويد · قريباً</span><span data-l="en">Android game · coming soon</span></span></div>
+                    <h1 data-reveal style="--d:.08s">
+                        <span data-l="ar">واش تعرف<span class="q">؟</span></span>
+                        <span data-l="en">Wach Ta3ref<span class="q">?</span></span>
+                    </h1>
+                    <p class="tagline" data-reveal style="--d:.14s"><span data-l="ar">لعبة كلمات وألغاز جزائرية بالدارجة</span><span data-l="en">An Algerian word puzzle game, in darija</span></p>
+                    <p class="gloss" data-reveal style="--d:.18s" data-l="en">“Wach ta3ref?” means “what do you know?”</p>
+                    <p class="sub" data-reveal style="--d:.22s"><span data-l="ar">جول في 69 ولاية، لقا الكلمات المخبية، واكتشف أسرار بلادك.</span><span data-l="en">Travel through all 69 wilayas, find the hidden words and discover the secrets of your country.</span></p>
+                    <div class="hero-cta" data-reveal style="--d:.3s">
+                        <a class="btn btn-go" id="play" href="https://play.google.com/store/apps/details?id=com.wachtaaref.game" aria-disabled="true">
+                            <span><span data-l="ar">قريباً على Google Play</span><span data-l="en">Coming soon on Google Play</span></span>
+                            <span class="ico"><i class="ph ph-google-play-logo"></i></span>
+                        </a>
+                        <a class="btn btn-ghost" href="#screens"><span><span data-l="ar">شوف الشاشات</span><span data-l="en">See the screens</span></span><span class="ico"><i class="ph ph-arrow-down"></i></span></a>
+                    </div>
+                </div>
 
-  <div class="shots">
-    <img src="shot1.webp" alt="القائمة" loading="lazy">
-    <img src="shot2.webp" alt="خريطة الجزائر" loading="lazy">
-    <img src="shot3.webp" alt="اللعبة" loading="lazy">
-    <img src="shot4.webp" alt="تعرف بلي؟" loading="lazy">
-    <img src="shot5.webp" alt="وين راهي؟" loading="lazy">
-    <img src="shot6.webp" alt="متحف بلادي" loading="lazy">
-    <img src="shot7.webp" alt="قاموسي" loading="lazy">
-  </div>
+                <div class="stage" id="stage" data-reveal style="--d:.1s">
+                    <div class="phone p-left"><img src="shot3.webp" alt="" width="540" height="960" data-alt-ar="ألغاز بالدارجة تاعنا" data-alt-en="Word puzzles in our darija"></div>
+                    <div class="phone p-right"><img src="shot2.webp" alt="" width="540" height="960" data-alt-ar="خريطة بلادك كاملة" data-alt-en="Your whole country on one map"></div>
+                    <div class="phone p-main"><img src="shot1.webp" alt="" width="540" height="960" fetchpriority="high" data-alt-ar="جول في 69 ولاية" data-alt-en="Tour 69 wilayas"></div>
+                    <span class="hex hex-1" aria-hidden="true"><b>D</b></span>
+                    <span class="hex hex-2" aria-hidden="true"><b>Z</b></span>
+                    <span class="hex hex-3" aria-hidden="true"><b>ش</b></span>
+                    <span class="hex hex-4" aria-hidden="true"><b>؟</b></span>
+                    <span class="hex hex-5" aria-hidden="true"><b>ر</b></span>
+                    <span class="hex hex-6" aria-hidden="true"><b>ع</b></span>
+                </div>
+            </div>
+        </section>
 
-  <div class="grid">
-    <div class="card"><h3>🇩🇿 جولة في 69 ولاية</h3><p>خريطة الجزائر كاملة: كل ولاية عندها أسئلتها، وكي تكملها تولّي ذهبية.</p></div>
-    <div class="card"><h3>🔠 ألغاز بالدارجة</h3><p>لقا الكلمات مخبية وسط الحروف السداسية قبل ما يكمل الوقت.</p></div>
-    <div class="card"><h3>💡 تعرف بلّي؟</h3><p>أكثر من 200 معلومة حقيقية على الولايات، تتفتح مستوى بمستوى.</p></div>
-    <div class="card"><h3>🏆 تحديات كل يوم</h3><p>تحدي اليوم، تحدي الأسبوع، ولعبة الخريطة «وين راهي؟».</p></div>
-    <div class="card"><h3>🏛️ متحف بلادي</h3><p>69 كنز من التراث الجزائري تجمعهم وانت تلعب.</p></div>
-    <div class="card"><h3>📖 قاموسي</h3><p>كل كلمة تلقاها تتسجل بمعناها، وكلمة جديدة كل نهار.</p></div>
-  </div>
+        <!-- Numbers -->
+        <section class="stats" aria-label="Numbers">
+            <div class="wrap stats-grid">
+                <div class="stat" data-reveal><b><span data-count="69">69</span></b><span><span data-l="ar">ولاية</span><span data-l="en">wilayas to explore</span></span></div>
+                <div class="stat" data-reveal style="--d:.08s"><b><span data-count="800">800</span>+</b><span><span data-l="ar">سؤال محلي</span><span data-l="en">local questions</span></span></div>
+                <div class="stat" data-reveal style="--d:.16s"><b><span data-count="200">200</span>+</b><span><span data-l="ar">معلومة حقيقية</span><span data-l="en">real facts</span></span></div>
+                <div class="stat" data-reveal style="--d:.24s"><b><span data-count="69">69</span></b><span><span data-l="ar">كنز من التراث</span><span data-l="en">heritage treasures</span></span></div>
+            </div>
+        </section>
 
-  <footer>
-    <a href="privacy.html">سياسة الخصوصية · Privacy Policy</a>
-    <a href="../">← Portfolio</a>
-    <p>صنع في الجزائر · Made in Algeria</p>
-  </footer>
-</div>
+        <!-- Features -->
+        <section class="section" id="features">
+            <div class="wrap">
+                <div class="sec-head">
+                    <h2 class="sec-title" data-reveal><span data-l="ar">واش لقيتي <span class="hl">فيها؟</span></span><span data-l="en">What's <span class="hl">inside</span></span></h2>
+                    <p class="sec-lede" data-reveal style="--d:.08s"><span data-l="ar">ست حاجات تخليك تقول «بعد شوية وحدة».</span><span data-l="en">Six reasons to say “one more round”.</span></p>
+                </div>
+                <div class="bento">
+                    <article class="tile" data-reveal>
+                        <i class="ph ph-map-trifold mark"></i>
+                        <div class="ico"><i class="ph ph-map-trifold"></i></div>
+                        <h3><span data-l="ar">جولة في 69 ولاية</span><span data-l="en">Tour all 69 wilayas</span></h3>
+                        <p><span data-l="ar">خريطة الجزائر كاملة: كل ولاية عندها أسئلتها، وكي تكملها تولّي ذهبية.</span><span data-l="en">The full map of Algeria: every wilaya has its own questions, and finishing one turns it gold.</span></p>
+                    </article>
+                    <article class="tile" data-reveal style="--d:.08s">
+                        <i class="ph ph-hexagon mark"></i>
+                        <div class="ico"><i class="ph ph-hexagon"></i></div>
+                        <h3><span data-l="ar">ألغاز بالدارجة</span><span data-l="en">Puzzles in darija</span></h3>
+                        <p><span data-l="ar">لقا الكلمات مخبية وسط الحروف السداسية قبل ما يكمل الوقت.</span><span data-l="en">Find the words hidden among the hexagon letters before time runs out.</span></p>
+                    </article>
+                    <article class="tile" data-reveal>
+                        <i class="ph ph-lightbulb mark"></i>
+                        <div class="ico"><i class="ph ph-lightbulb"></i></div>
+                        <h3><span data-l="ar">تعرف بلّي؟</span><span data-l="en">Did you know?</span></h3>
+                        <p><span data-l="ar">أكثر من 200 معلومة حقيقية على الولايات، تتفتح مستوى بمستوى.</span><span data-l="en">200+ real facts about the wilayas, unlocked level by level.</span></p>
+                    </article>
+                    <article class="tile" data-reveal style="--d:.08s">
+                        <i class="ph ph-calendar-check mark"></i>
+                        <div class="ico"><i class="ph ph-calendar-check"></i></div>
+                        <h3><span data-l="ar">تحديات كل يوم</span><span data-l="en">Daily challenges</span></h3>
+                        <p><span data-l="ar">تحدي اليوم، تحدي الأسبوع، ولعبة الخريطة «وين راهي؟».</span><span data-l="en">A challenge of the day, a challenge of the week, and the map game “Where is it?”.</span></p>
+                    </article>
+                    <article class="tile" data-reveal>
+                        <i class="ph ph-bank mark"></i>
+                        <div class="ico"><i class="ph ph-bank"></i></div>
+                        <h3><span data-l="ar">متحف بلادي</span><span data-l="en">My Country Museum</span></h3>
+                        <p><span data-l="ar">69 كنز من التراث الجزائري تجمعهم وانت تلعب.</span><span data-l="en">69 treasures of Algerian heritage to collect while you play.</span></p>
+                    </article>
+                    <article class="tile" data-reveal style="--d:.08s">
+                        <i class="ph ph-book-open-text mark"></i>
+                        <div class="ico"><i class="ph ph-book-open-text"></i></div>
+                        <h3><span data-l="ar">قاموسي</span><span data-l="en">My Dictionary</span></h3>
+                        <p><span data-l="ar">كل كلمة تلقاها تتسجل بمعناها، وكلمة جديدة كل نهار.</span><span data-l="en">Every word you find is saved with its meaning, plus a new word every day.</span></p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screens -->
+        <section class="section screens" id="screens">
+            <div class="wrap">
+                <div class="sec-head">
+                    <h2 class="sec-title" data-reveal><span data-l="ar">شوف <span class="hl">بعينك</span></span><span data-l="en">See it <span class="hl">in action</span></span></h2>
+                    <div class="sec-lede rail-bar" data-reveal style="--d:.08s">
+                        <span><span data-l="ar">اسحب أو استعمل الأسهم.</span><span data-l="en">Drag, swipe or use the arrows.</span></span>
+                        <div class="rail-ctrl">
+                            <button type="button" id="railPrev" aria-label="Previous"><i class="ph ph-arrow-left flip"></i></button>
+                            <button type="button" id="railNext" aria-label="Next"><i class="ph ph-arrow-right flip"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rail" id="rail" data-reveal tabindex="0" aria-label="Screenshots">
+                <figure class="shot"><img src="shot1.webp" loading="lazy" alt="" width="540" height="960" data-alt-ar="القائمة الرئيسية" data-alt-en="Main menu"><figcaption><b>01</b><span><span data-l="ar">جول في 69 ولاية</span><span data-l="en">Tour 69 wilayas</span></span></figcaption></figure>
+                <figure class="shot"><img src="shot2.webp" loading="lazy" alt="" width="540" height="960" data-alt-ar="خريطة الجزائر" data-alt-en="Map of Algeria"><figcaption><b>02</b><span><span data-l="ar">خريطة بلادك كاملة</span><span data-l="en">Your whole country on one map</span></span></figcaption></figure>
+                <figure class="shot"><img src="shot3.webp" loading="lazy" alt="" width="540" height="960" data-alt-ar="لوحة الألغاز" data-alt-en="Puzzle board"><figcaption><b>03</b><span><span data-l="ar">ألغاز بالدارجة تاعنا</span><span data-l="en">Word puzzles in our darija</span></span></figcaption></figure>
+                <figure class="shot"><img src="shot4.webp" loading="lazy" alt="" width="540" height="960" data-alt-ar="تعرف بلّي؟" data-alt-en="Did you know?"><figcaption><b>04</b><span><span data-l="ar">تعلّم أسرار كل ولاية</span><span data-l="en">Learn the secrets of every wilaya</span></span></figcaption></figure>
+                <figure class="shot"><img src="shot5.webp" loading="lazy" alt="" width="540" height="960" data-alt-ar="وين راهي؟" data-alt-en="Where is it?"><figcaption><b>05</b><span><span data-l="ar">وين راهي؟ اختبر روحك</span><span data-l="en">Where is it? Test yourself</span></span></figcaption></figure>
+                <figure class="shot"><img src="shot6.webp" loading="lazy" alt="" width="540" height="960" data-alt-ar="متحف بلادي" data-alt-en="My Country Museum"><figcaption><b>06</b><span><span data-l="ar">متحف فيه 69 كنز</span><span data-l="en">A museum with 69 treasures</span></span></figcaption></figure>
+                <figure class="shot"><img src="shot7.webp" loading="lazy" alt="" width="540" height="960" data-alt-ar="قاموسي" data-alt-en="My Dictionary"><figcaption><b>07</b><span><span data-l="ar">قاموسك الجزائري</span><span data-l="en">Your Algerian dictionary</span></span></figcaption></figure>
+            </div>
+            <div class="rail-progress" aria-hidden="true"><i id="railBar"></i></div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section">
+            <div class="wrap">
+                <div class="cta" data-reveal>
+                    <span class="hex hex-a" aria-hidden="true"><b>ش</b></span>
+                    <span class="hex hex-b" aria-hidden="true"><b>Z</b></span>
+                    <span class="hex hex-c" aria-hidden="true"><b>؟</b></span>
+                    <h2><span data-l="ar">جاهز <span class="hl">تلعب؟</span></span><span data-l="en">Ready to <span class="hl">play?</span></span></h2>
+                    <p><span data-l="ar">اللعبة قريباً على Google Play. عندك سؤال ولا اقتراح؟ كتبلي.</span><span data-l="en">The game is coming soon to Google Play. Got a question or an idea? Write to me.</span></p>
+                    <div class="hero-cta">
+                        <a class="btn btn-go" id="play2" href="https://play.google.com/store/apps/details?id=com.wachtaaref.game" aria-disabled="true">
+                            <span><span data-l="ar">قريباً على Google Play</span><span data-l="en">Coming soon on Google Play</span></span>
+                            <span class="ico"><i class="ph ph-google-play-logo"></i></span>
+                        </a>
+                        <a class="btn btn-ghost" href="privacy.html"><span><span data-l="ar">سياسة الخصوصية</span><span data-l="en">Privacy policy</span></span><span class="ico"><i class="ph ph-shield-check"></i></span></a>
+                    </div>
+                    <a class="mail-link" href="mailto:topplay020@gmail.com"><i class="ph ph-envelope-simple"></i><span>topplay020@gmail.com</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap foot">
+            <nav aria-label="Footer">
+                <a href="privacy.html"><span data-l="ar">سياسة الخصوصية</span><span data-l="en">Privacy policy</span></a>
+                <a href="../"><span data-l="ar">المعرض (Portfolio)</span><span data-l="en">← Back to portfolio</span></a>
+            </nav>
+            <p><span data-l="ar">صُنع في الجزائر</span><span data-l="en">Made in Algeria</span></p>
+        </div>
+    </footer>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="game.js" defer></script>
 </body>
+
 </html>
